@@ -4,3 +4,4 @@ resources:
 - podinfo-deployment.yaml
 - imagepolicy.yaml
 - registry.yaml
+- image-update.yaml
