@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: podinfo
-  namespace: podinfo
+  namespace: flux
 spec:
   interval: 3m
   ref:
