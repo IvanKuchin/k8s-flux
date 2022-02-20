@@ -3,5 +3,4 @@ resources:
 
 images:
 - name: chat-image
-  newName: registry.conn-me.ru:5000/bestbounty.ru-chat
-  newTag: v1.0.0
+  newName: registry.conn-me.ru:5000/bestbounty.ru-chat:v1.0.0

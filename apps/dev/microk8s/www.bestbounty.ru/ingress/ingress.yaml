@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: app-ingress-redirect
   annotations:
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.connme.microk8s.conn-me.ru"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.bestbounty.microk8s.conn-me.ru"
 spec:
   rules:
-  - host: connme.microk8s.conn-me.ru
+  - host: bestbounty.microk8s.conn-me.ru
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -18,10 +18,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.connme.microk8s.conn-me.ru
-    secretName: https
+    - www.bestbounty.microk8s.conn-me.ru
+    secretName: https-secret
   rules:
-  - host: www.connme.microk8s.conn-me.ru
+  - host: www.bestbounty.microk8s.conn-me.ru
     http:
       paths:
       - pathType: Prefix
@@ -61,7 +61,7 @@ metadata:
   name: adminer-ingress
 spec:
   rules:
-  - host: adminer.connme.microk8s.conn-me.ru
+  - host: adminer.bestbounty.microk8s.conn-me.ru
     http:
       paths:
       - pathType: Prefix
@@ -71,3 +71,22 @@ spec:
             name: adminer-service
             port:
               number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+  name: goaccess-ingress
+spec:
+  rules:
+  - host: goaccess.bestbounty.microk8s.conn-me.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: goaccess-service
+            port:
+              number: 80
+ 

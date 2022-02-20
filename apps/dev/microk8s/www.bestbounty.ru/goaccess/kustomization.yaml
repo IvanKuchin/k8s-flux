@@ -1,3 +1,2 @@
 resources:
-- ../../../../base/goaccess
-
+- ../../../../base/engine_cpp/goaccess

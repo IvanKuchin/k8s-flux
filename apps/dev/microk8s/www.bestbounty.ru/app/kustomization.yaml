@@ -1,14 +1,11 @@
 resources:
-- ../../../../base/app
+- ../../../../base/engine_cpp/app
 
 images:
 - name: app-image
-  newName: registry.conn-me.ru:5000/connme.ru-app
-  newTag: v1.1.14
+  newName: registry.conn-me.ru:5000/bestbounty.ru-app:v1.0.0
 - name: images-image
-  newName: registry.conn-me.ru:5000/connme.ru-images
-  newTag: v1.1.14
+  newName: registry.conn-me.ru:5000/bestbounty.ru-images:v1.0.0
 - name: cron-image
-  newName: registry.conn-me.ru:5000/connme.ru-cron
-  newTag: v1.1.14
+  newName: registry.conn-me.ru:5000/bestbounty.ru-cron:v1.0.0
 

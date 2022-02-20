@@ -1,3 +1,2 @@
 resources:
-- ../../../../base/db
-
+- ../../../../base/engine_cpp/db
