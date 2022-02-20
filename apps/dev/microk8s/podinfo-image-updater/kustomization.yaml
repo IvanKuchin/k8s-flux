@@ -5,3 +5,6 @@ resources:
 - imagepolicy.yaml
 - registry.yaml
 - image-update.yaml
+images:
+- name: app-image
+  newName: ghcr.io/stefanprodan/podinfo:5.0.0 # {"$imagepolicy": "flux-system:podinfo-image-policy"}

@@ -1,0 +1,7 @@
+resources:
+- ../../../../base/engine_cpp/chat/
+
+images:
+- name: chat-image
+  newName: registry.conn-me.ru:5000/bestbounty.ru-chat
+  newTag: v1.0.0

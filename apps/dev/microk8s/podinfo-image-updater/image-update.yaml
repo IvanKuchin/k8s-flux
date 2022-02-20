@@ -21,6 +21,6 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./clusters/microk8s-dev
+    path: ./clusters/dev/microk8s
     strategy: Setters
 

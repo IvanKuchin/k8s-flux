@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    type: nfs
+  name: www.connme.ru-apachelogs-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    name: apachelogs-pvc
+    namespace: www-connme-ru
+  nfs:
+    path: /storage_local/www.connme.ru/apache_logs
+    server: 192.168.170.36
+  storageClassName: slow
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    type: nfs
+  name: www.connme.ru-db-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    name: db-pvc
+    namespace: www-connme-ru
+  nfs:
+    path: /storage_local/www.connme.ru/mysql
+    server: 192.168.170.36
+  storageClassName: slow
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    type: nfs
+  name: www.connme.ru-images-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    name: images-pvc
+    namespace: www-connme-ru
+  nfs:
+    path: /storage_local/www.connme.ru/images
+    server: 192.168.170.36
+  storageClassName: slow
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: www.connme.ru-goaccess-pv
+  labels:
+    type: nfs
+spec:
+  storageClassName: slow
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  #mountOptions:
+  #    - hard
+  nfs:
+    path: /storage_local/www.connme.ru/goaccess
+    server: 192.168.170.36
+  claimRef:
+    name: goaccess-pvc
+    namespace: www-connme-ru

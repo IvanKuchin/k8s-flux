@@ -1,0 +1,6 @@
+resources:
+- pv-s.yaml
+
+#patchesStrategicMerge:
+#- app-ingress.yaml
+#- app-ingress-redirect.yaml
