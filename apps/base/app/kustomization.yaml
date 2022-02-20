@@ -1,0 +1,7 @@
+resources:
+- apachelogs-pvc.yaml
+- app-deployment.yaml
+- cron-deployment.yaml
+- images-pvc.yaml
+- images-deployment.yaml
+

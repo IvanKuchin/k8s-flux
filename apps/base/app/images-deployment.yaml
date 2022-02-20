@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: images-deployment
+  labels:
+    type: images
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: images
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: images-pod
+      labels:
+        type: images
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      volumes:
+        - name: images-vol
+          persistentVolumeClaim:
+            claimName: images-pvc
+        - name: logs-apache-vol
+          emptyDir: {}
+      containers:
+        - name: images-container
+          image: images-image
+          ports:
+            - containerPort: 80
+          env:
+            - name: APACHE_RUN_USER
+              value: www-data
+            - name: APACHE_RUN_GROUP
+              value: www-data
+          volumeMounts:
+            - name: images-vol
+              mountPath: "/home/httpd/images/html"
+            - name: logs-apache-vol
+              mountPath: "/home/httpd/images/logs"
+        - name: log-images-apache-access-container
+          image: busybox
+          securityContext:
+            runAsUser: 65534
+            runAsGroup: 65534
+          volumeMounts:
+          - name: logs-apache-vol
+            mountPath: /var/log
+          args:
+          - /bin/sh
+          - -c
+          - >
+              touch /var/log/access.log;
+              tail -n+1 -f /var/log/access.log;
+        - name: log-images-apache-error-container
+          image: busybox
+          securityContext:
+            runAsUser: 65534
+            runAsGroup: 65534
+          volumeMounts:
+          - name: logs-apache-vol
+            mountPath: /var/log
+          args:
+          - /bin/sh
+          - -c
+          - >
+              touch /var/log/error.log;
+              tail -n+1 -f /var/log/error.log;
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: images-service
+  labels:
+    type: images
+spec:
+  ports:
+  - name: images-service
+    port: 80
+    targetPort: 80
+  selector:
+    type: images

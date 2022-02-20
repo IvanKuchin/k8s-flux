@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  labels:
+    type: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: db-pod
+      labels:
+        type: db
+    spec:
+      volumes:
+        - name: db-volume
+          persistentVolumeClaim:
+            claimName: db-pvc
+        - name: mysql-root-passwd
+          configMap:
+            name: mysql-root-passwd
+      containers:
+        - name: db-container
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          args:
+          - --default-authentication-plugin=mysql_native_password
+          - --character-set-server=utf8mb4
+          env:
+          - name: TZ
+            value: Europe/Moscow
+          - name: MYSQL_ROOT_PASSWORD_FILE
+            value: /usr/local/share/run/secrets/mysql-root
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: db-volume
+            - mountPath: /usr/local/share/run/secrets/
+              name: mysql-root-passwd
+          livenessProbe:
+            exec:
+              command: ["mysqladmin", "-u", "guest", "-pguest", "ping"]
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command: ["mysql", "-h", "127.0.0.1", "-u", "guest", "-pguest", "-e", "SELECT 1"]
+            initialDelaySeconds: 5
+            periodSeconds: 2
+            timeoutSeconds: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    type: db
+  name: db-service
+spec:
+  ports:
+  - name: mysql-service
+    port: 3306
+    targetPort: 3306
+  selector:
+    type: db

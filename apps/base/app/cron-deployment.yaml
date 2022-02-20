@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cron-deployment
+  labels:
+    type: cron
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: cron
+  strategy: {}
+  template:
+    metadata:
+      name: cron-pod
+      labels:
+        type: cron
+    spec:
+      hostAliases:
+      - ip: "172.16.17.68"
+        hostnames:
+        - "mail"
+      imagePullSecrets:
+        - name: ghcr-secret
+      volumes:
+        - name: logs-app-vol
+          emptyDir: {}
+        - name: app-secret
+          configMap:
+            name: app-secret
+      containers:
+        - name: cron-container
+          image: cron-image
+          volumeMounts:
+            - mountPath: "/usr/local/share/www/log"
+              name: logs-app-vol
+            - name: app-secret
+              mountPath: "/usr/local/share/www/config/secret"
+        #- name: log-app-container
+        #  image: busybox
+        #  securityContext:
+        #    runAsUser: 33
+        #    runAsGroup: 33
+        #  volumeMounts:
+        #  - name: logs-app-vol
+        #    mountPath: /var/log
+        #  args:
+        #  - /bin/sh
+        #  - -c
+        #  - >
+        #      touch /var/log/backend.log;
+        #      tail -n+1 -f /var/log/backend.log;
+
+      initContainers:
+      - name: init-mysql
+        image: busybox
+        command: ['sh', '-c', 'until nslookup db-service; do echo waiting for mysql; sleep 2; done;']

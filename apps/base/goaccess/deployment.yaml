@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    type: goaccess
+  name: goaccess-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: goaccess
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: goaccess-pod
+      labels:
+        type: goaccess
+    spec:
+      volumes:
+        - name: goaccess-vol
+          persistentVolumeClaim:
+            claimName: goaccess-pvc
+      containers:
+        - name: goaccess-container
+          image: httpd
+          volumeMounts:
+          - name: goaccess-vol
+            mountPath: /usr/local/apache2/htdocs/
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    type: goaccess
+  name: goaccess-service
+spec:
+  ports:
+  - name: goaccess-service
+    port: 80
+    targetPort: 80
+  selector:
+    type: goaccess

@@ -1,0 +1,54 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-daily-cronjob
+spec:
+  schedule: "0 4 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 33
+          volumes:
+          - name: images-vol
+            persistentVolumeClaim:
+              claimName: images-pvc
+          - name: ssh-identity-vol
+            configMap:
+              name: ssh-identity-secret
+              defaultMode: 0400
+          containers:
+          - name: backup-container
+            image: ikuchin/ssh-rsync-mysql-client
+            env:
+            - name: TZ
+              value: Europe/Moscow
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            volumeMounts:
+            - name: images-vol
+              mountPath: /storage_local/images
+              readOnly: true
+            - name: ssh-identity-vol
+              mountPath: /ssh-identity
+            command: ["/bin/sh", "-c"]
+            args: ["cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+                    && rsync -rptoDzh --delete -e \"ssh -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no'\"  /storage_local/images/ ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/rsync/
+                    && mysqldump --add-drop-table -Q -h db-service -u backup -pbackup www | gzip > mysql_dump_`date +%Y%m%d%H%M%S`.gz
+                    && tar -czf images_`date +%Y%m%d%H%M%S`.tar.gz /storage_local/images/
+                    && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' mysql_*.gz ikuchin@172.16.17.68:/storage/ikuchin/backup/${NAMESPACE}/mysql/
+                    && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' images_*.gz ikuchin@172.16.17.68:/storage/ikuchin/backup/${NAMESPACE}/images/
+                    && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' mysql_*.gz ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/mysql/
+                    && if [[ $(date +%u) -eq 6 ]]; then scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' images_*.gz ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/images/; fi
+                    "]
+            resources:
+              limits:
+                cpu: 250m
+              requests:
+                cpu: 100m
+          restartPolicy: Never
