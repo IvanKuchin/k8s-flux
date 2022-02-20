@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./clusters/microk8s-dev
+  path: ./clusters/dev/microk8s
   prune: true
   sourceRef:
     kind: GitRepository
