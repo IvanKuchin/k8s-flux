@@ -7,4 +7,5 @@ resources:
 - image-update.yaml
 images:
 - name: app-image
-  newName: ghcr.io/stefanprodan/podinfo:5.1.4 # {"$imagepolicy": "flux-system:podinfo-image-policy"}
+  newName: ghcr.io/stefanprodan/podinfo
+  newTag: 5.1.0 # {"$imagepolicy": "flux-system:podinfo-image-policy"}
