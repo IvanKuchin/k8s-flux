@@ -8,4 +8,4 @@ resources:
 images:
 - name: app-image
   newName: ghcr.io/stefanprodan/podinfo
-  newTag: 5.1.0 # {"$imagepolicy": "flux-system:podinfo-image-policy"}
+  newTag: ghcr.io/stefanprodan/podinfo:5.1.4 # {"$imagepolicy": "flux-system:podinfo-image-policy"}
