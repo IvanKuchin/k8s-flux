@@ -5,6 +5,8 @@ metadata:
   name: bestbounty-app
   namespace: flux-system
 spec:
+  certSecretRef:
+    name: local-registry-cert
   image: registry.conn-me.ru:5000/bestbounty.ru-app
   interval: 1m0s
 
