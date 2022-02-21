@@ -20,3 +20,39 @@ spec:
         - name: http
           containerPort: 9898
           protocol: TCP
+      volumes:
+        - name: empty-dir-vol
+          persistentVolumeClaim:
+            claimName: empty-dir-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: empty-dir-pvc
+  namespace: podinfo-image-updater
+spec:
+  storageClassName: slow
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    type: nfs
+  name: podinfoimageupdater-emptydir-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    name: empty-dir-pvc
+    namespace: podinfo-image-updater
+  nfs:
+    path: /storage_local/podinfo-image-updater/empty-dir
+    server: 192.168.170.36
+  storageClassName: slow
