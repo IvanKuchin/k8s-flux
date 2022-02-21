@@ -2,7 +2,7 @@ resources:
 - ../../../../base/engine_cpp/app
 images:
 - name: app-image
-  newName: registry.conn-me.ru:5000/bestbounty.ru-app:v1.1.14 # {"$imagepolicy": "flux-system:bestbounty-app"}
+  newName: registry.conn-me.ru:5000/bestbounty.ru-app:v1.0.0 # {"$imagepolicy": "flux-system:bestbounty-app"}
 - name: images-image
   newName: registry.conn-me.ru:5000/bestbounty.ru-images:v1.1.14 # {"$imagepolicy": "flux-system:bestbounty-images"}
 - name: cron-image
