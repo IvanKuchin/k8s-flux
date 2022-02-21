@@ -4,3 +4,4 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - local-registry-cert.yaml
+- image-update.yaml

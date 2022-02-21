@@ -4,7 +4,6 @@ resources:
 - podinfo-deployment.yaml
 - imagepolicy.yaml
 - registry.yaml
-- image-update.yaml
 images:
 - name: app-image
   newName: ghcr.io/stefanprodan/podinfo:5.1.4 # {"$imagepolicy": "flux-system:podinfo-image-policy"}
