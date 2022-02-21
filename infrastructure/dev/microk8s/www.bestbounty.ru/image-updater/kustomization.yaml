@@ -1,2 +1,4 @@
 resources:
 - app.yaml
+- cron.yaml
+- images.yaml

@@ -1,0 +1,25 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: bestbounty-cron
+  namespace: flux-system
+spec:
+  certSecretRef:
+    name: local-registry-cert
+  image: registry.conn-me.ru:5000/bestbounty.ru-cron
+  interval: 1m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: bestbounty-cron
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: bestbounty-cron
+  policy:
+    semver:
+      range: 1.x.x
+
