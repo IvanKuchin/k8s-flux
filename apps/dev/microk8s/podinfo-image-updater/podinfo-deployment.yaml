@@ -50,7 +50,7 @@ metadata:
   name: podinfoimageupdater-emptydir-pv
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   capacity:
     storage: 10Gi
   claimRef:
