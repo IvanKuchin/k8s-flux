@@ -37,7 +37,7 @@ metadata:
 spec:
   storageClassName: slow
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 3Gi
