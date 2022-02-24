@@ -7,8 +7,8 @@ spec:
   selector:
     matchLabels:
       app: podinfo
-  strategy:
-    type: Recreate
+  #strategy:
+    #type: Recreate
   template:
     metadata:
       labels:
@@ -32,6 +32,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: empty-dir-pvc
   namespace: podinfo-image-updater
+  annotations:
+    kustomize.toolkit.fluxcd.io/reconcile: "disabled"
 spec:
   storageClassName: slow
   accessModes:
