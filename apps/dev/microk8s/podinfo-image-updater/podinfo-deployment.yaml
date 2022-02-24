@@ -32,8 +32,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: empty-dir-pvc
   namespace: podinfo-image-updater
-  annotations:
-    kustomize.toolkit.fluxcd.io/reconcile: "disabled"
+  #annotations:
+    #kustomize.toolkit.fluxcd.io/reconcile: "disabled"
 spec:
   storageClassName: slow
   accessModes:
