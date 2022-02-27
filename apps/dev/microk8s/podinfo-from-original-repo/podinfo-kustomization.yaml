@@ -10,6 +10,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: podinfo
+    name: podinfo-app
   targetNamespace: podinfo-app
 
