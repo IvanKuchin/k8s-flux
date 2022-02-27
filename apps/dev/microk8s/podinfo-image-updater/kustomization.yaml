@@ -2,8 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - podinfo-deployment.yaml
-- imagepolicy.yaml
-- registry.yaml
+- infra.yaml
 images:
 - name: app-image
   newName: ghcr.io/stefanprodan/podinfo:5.1.0 # {"$imagepolicy": "flux-system:podinfo-image-policy"}
