@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deployment
+  
+  labels:
+    type: admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: admin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: admin-pod
+      labels:
+        type: admin
+    spec:
+      securityContext:
+        fsGroup: 33    # --- assign group ID to mounted volume
+      hostAliases:
+      - ip: "172.16.17.68"
+        hostnames:
+        - "mail"
+      imagePullSecrets:
+        - name: ghcr-secret
+      volumes:
+        - name: images-vol
+          persistentVolumeClaim:
+            claimName: images-pvc
+        - name: app-secret
+          configMap:
+            name: app-secret
+      containers:
+        - name: admin-container
+          image: admin-image
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: images-vol
+            mountPath: /home/httpd/images/html
+          - name: app-secret
+            mountPath: /usr/local/share/www/config/secret
+ 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-service
+  
+  labels:
+    type: admin
+spec:
+  ports:
+  - name: admin-service
+    port: 80
+    targetPort: 80
+  selector:
+    type: admin

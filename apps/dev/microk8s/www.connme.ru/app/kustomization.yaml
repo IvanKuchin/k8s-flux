@@ -1,0 +1,23 @@
+resources:
+- ../../../../base/engine_cpp/app
+
+images:
+- name: app-image
+  newName: registry.conn-me.ru:5000/connme.ru-app
+  newTag: v1.1.19
+- name: uploaders-image
+  newName: registry.conn-me.ru:5000/connme.ru-uploaders
+  newTag: v1.1.19
+- name: ui-image
+  newName: registry.conn-me.ru:5000/connme.ru-ui
+  newTag: v1.1.19
+- name: admin-image
+  newName: registry.conn-me.ru:5000/connme.ru-admin
+  newTag: v1.1.18
+- name: images-image
+  newName: registry.conn-me.ru:5000/connme.ru-images
+  newTag: v1.1.20
+- name: cron-image
+  newName: registry.conn-me.ru:5000/connme.ru-cron
+  newTag: v1.1.20
+

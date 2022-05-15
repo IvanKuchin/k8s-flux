@@ -23,8 +23,8 @@ spec:
       imagePullSecrets:
         - name: ghcr-secret
       volumes:
-        - name: logs-app-vol
-          emptyDir: {}
+        #- name: logs-app-vol
+        #  emptyDir: {}
         - name: app-secret
           configMap:
             name: app-secret
@@ -32,10 +32,10 @@ spec:
         - name: cron-container
           image: cron-image
           volumeMounts:
-            - mountPath: "/usr/local/share/www/log"
-              name: logs-app-vol
             - name: app-secret
               mountPath: "/usr/local/share/www/config/secret"
+        #    - mountPath: "/usr/local/share/www/log"
+        #      name: logs-app-vol
         #- name: log-app-container
         #  image: busybox
         #  securityContext:

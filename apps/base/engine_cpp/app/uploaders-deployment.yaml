@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: uploaders-deployment
   
   labels:
-    type: app
+    type: uploaders
 spec:
   replicas: 1
   selector:
     matchLabels:
-      type: app
+      type: uploaders
   strategy:
     type: Recreate
   template:
     metadata:
-      name: app-pod
+      name: uploaders-pod
       labels:
-        type: app
+        type: uploaders
     spec:
       securityContext:
         fsGroup: 33    # --- assign group ID to mounted volume
@@ -42,8 +42,8 @@ spec:
           configMap:
             name: admin-htpasswd
       containers:
-        - name: app-container
-          image: app-image
+        - name: uploaders-container
+          image: uploaders-image
           ports:
             - containerPort: 80
           volumeMounts:
@@ -112,14 +112,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-service
+  name: uploaders-service
   
   labels:
-    type: app
+    type: uploaders
 spec:
   ports:
-  - name: app-service
+  - name: uploaders-service
     port: 80
     targetPort: 80
   selector:
-    type: app
+    type: uploaders

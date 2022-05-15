@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  
+  labels:
+    type: ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: ui
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: ui-pod
+      labels:
+        type: ui
+    spec:
+      securityContext:
+        fsGroup: 33    # --- assign group ID to mounted volume
+      hostAliases:
+      - ip: "172.16.17.68"
+        hostnames:
+        - "mail"
+      imagePullSecrets:
+        - name: ghcr-secret
+      volumes:
+        - name: images-vol
+          persistentVolumeClaim:
+            claimName: images-pvc
+      containers:
+        - name: ui-container
+          image: ui-image
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: images-vol
+            mountPath: /home/httpd/images/html
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-service
+  
+  labels:
+    type: ui
+spec:
+  ports:
+  - name: ui-service
+    port: 80
+    targetPort: 80
+  selector:
+    type: ui

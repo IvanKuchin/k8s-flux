@@ -1,0 +1,7 @@
+resources:
+- ingress.yaml
+- uploaders-ingress.yaml
+
+patchesStrategicMerge:
+#- nginx-ingress-tcp-microk8s-conf.yaml
+#- nginx-ingress-microk8s-controller.yaml
