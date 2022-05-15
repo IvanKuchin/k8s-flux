@@ -7,5 +7,4 @@ resources:
   - goaccess
   - ingress
   - pv
-  - image-updater
 namespace: www-connme-ru
