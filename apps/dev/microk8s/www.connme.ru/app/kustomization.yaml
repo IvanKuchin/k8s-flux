@@ -6,11 +6,9 @@ images:
 - name: uploaders-image
   newName: registry.conn-me.ru:5000/connme.ru-uploaders:v1.1.19 # {"$imagepolicy": "flux-system:connme-uploaders"}
 - name: ui-image
-  newName: registry.conn-me.ru:5000/connme.ru-ui
-  newTag: v1.1.19
+  newName: registry.conn-me.ru:5000/connme.ru-ui:v1.1.19 # {"$imagepolicy": "flux-system:connme-ui"}
 - name: admin-image
-  newName: registry.conn-me.ru:5000/connme.ru-admin
-  newTag: v1.1.18
+  newName: registry.conn-me.ru:5000/connme.ru-admin:v1.1.18 # {"$imagepolicy": "flux-system:connme-admin"}
 - name: images-image
   newName: registry.conn-me.ru:5000/connme.ru-images:v1.1.20 # {"$imagepolicy": "flux-system:connme-images"}
 - name: cron-image
