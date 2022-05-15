@@ -22,6 +22,27 @@ spec:
             port:
               number: 80
       - pathType: Prefix
+        path: /cgi-bin/companylogouploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/generalimageuploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/grouplogouploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
+      - pathType: Prefix
         path: /cgi-bin/imageuploader.cgi
         backend:
           service:
