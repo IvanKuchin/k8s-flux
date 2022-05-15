@@ -4,7 +4,7 @@ images:
 - name: app-image
   newName: registry.conn-me.ru:5000/connme.ru-app:v1.1.19 # {"$imagepolicy": "flux-system:connme-app"}
 - name: uploaders-image
-  newName: registry.conn-me.ru:5000/connme.ru-uploaders:v1.1.19 # {"$imagepolicy": "flux-system:connme-uploaders"}
+  newName: registry.conn-me.ru:5000/connme.ru-uploaders:v1.1.20 # {"$imagepolicy": "flux-system:connme-uploaders"}
 - name: ui-image
   newName: registry.conn-me.ru:5000/connme.ru-ui:v1.1.19 # {"$imagepolicy": "flux-system:connme-ui"}
 - name: admin-image
