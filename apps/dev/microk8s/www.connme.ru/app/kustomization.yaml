@@ -2,11 +2,9 @@ resources:
 - ../../../../base/engine_cpp/app
 images:
 - name: app-image
-  newName: registry.conn-me.ru:5000/connme.ru-app
-  newTag: registry.conn-me.ru:5000/connme.ru-app:v1.1.19 # {"$imagepolicy": "flux-system:connme-app"}
+  newName: registry.conn-me.ru:5000/connme.ru-app:v1.1.19 # {"$imagepolicy": "flux-system:connme-app"}
 - name: uploaders-image
-  newName: registry.conn-me.ru:5000/connme.ru-uploaders
-  newTag: registry.conn-me.ru:5000/connme.ru-uploaders:v1.1.19 # {"$imagepolicy": "flux-system:connme-uploaders"}
+  newName: registry.conn-me.ru:5000/connme.ru-uploaders:v1.1.19 # {"$imagepolicy": "flux-system:connme-uploaders"}
 - name: ui-image
   newName: registry.conn-me.ru:5000/connme.ru-ui
   newTag: v1.1.19
@@ -14,8 +12,6 @@ images:
   newName: registry.conn-me.ru:5000/connme.ru-admin
   newTag: v1.1.18
 - name: images-image
-  newName: registry.conn-me.ru:5000/connme.ru-images
-  newTag: registry.conn-me.ru:5000/connme.ru-images:v1.1.20 # {"$imagepolicy": "flux-system:connme-images"}
+  newName: registry.conn-me.ru:5000/connme.ru-images:v1.1.20 # {"$imagepolicy": "flux-system:connme-images"}
 - name: cron-image
-  newName: registry.conn-me.ru:5000/connme.ru-cron
-  newTag: registry.conn-me.ru:5000/connme.ru-cron:v1.1.20 # {"$imagepolicy": "flux-system:connme-cron"}
+  newName: registry.conn-me.ru:5000/connme.ru-cron:v1.1.20 # {"$imagepolicy": "flux-system:connme-cron"}
