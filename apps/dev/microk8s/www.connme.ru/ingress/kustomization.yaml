@@ -1,6 +1,9 @@
 resources:
 - ingress.yaml
 - uploaders-ingress.yaml
+- admin-ingress.yaml
+- adminer-ingress.yaml
+
 
 patchesStrategicMerge:
 #- nginx-ingress-tcp-microk8s-conf.yaml

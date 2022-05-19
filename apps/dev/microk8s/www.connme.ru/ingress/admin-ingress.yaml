@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: admin-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - www.connme.microk8s.conn-me.ru
+    secretName: https-secret
+  rules:
+  - host: www.connme.microk8s.conn-me.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /cgi-bin/admin/admin.cgi
+        backend:
+          service:
+            name: admin-service
+            port:
+              number: 80
