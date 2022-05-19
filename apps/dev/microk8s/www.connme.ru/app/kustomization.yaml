@@ -12,4 +12,4 @@ images:
 - name: images-image
   newName: registry.conn-me.ru:5000/connme.ru-images:v1.1.20 # {"$imagepolicy": "flux-system:connme-images"}
 - name: cron-image
-  newName: registry.conn-me.ru:5000/connme.ru-cron:v1.1.20 # {"$imagepolicy": "flux-system:connme-cron"}
+  newName: registry.conn-me.ru:5000/connme.ru-cron:v1.1.21 # {"$imagepolicy": "flux-system:connme-cron"}
