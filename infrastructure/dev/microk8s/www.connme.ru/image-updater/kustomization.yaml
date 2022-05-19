@@ -5,3 +5,4 @@ resources:
 - cron.yaml
 - images.yaml
 - ui.yaml
+- chat.yaml
