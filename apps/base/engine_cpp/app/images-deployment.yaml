@@ -27,7 +27,7 @@ spec:
           emptyDir: {}
       containers:
         - name: images-container
-          image: images-image
+          image: www-server-image
           ports:
             - containerPort: 80
           env:
