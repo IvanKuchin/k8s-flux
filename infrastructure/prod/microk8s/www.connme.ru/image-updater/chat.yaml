@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: websocket-chat
+  namespace: flux-system
+spec:
+  image: ghcr.io/ivankuchin/websocket-chat
+  interval: 15m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: websocket-chat
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: websocket-chat
+  policy:
+    semver:
+      range: 1.x.x
+

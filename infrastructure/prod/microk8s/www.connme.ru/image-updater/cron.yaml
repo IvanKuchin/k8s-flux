@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: connme-cron
+  namespace: flux-system
+spec:
+  image: ghcr.io/ivankuchin/connme.ru-cron
+  interval: 15m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: connme-cron
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: connme-cron
+  policy:
+    semver:
+      range: 1.x.x
+
