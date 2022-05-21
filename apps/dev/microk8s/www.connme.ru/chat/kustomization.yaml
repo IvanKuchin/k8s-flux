@@ -3,4 +3,4 @@ resources:
 
 images:
 - name: chat-image
-  newName: registry.conn-me.ru:5000/connme.ru-chat:v1.1.19 # {"$imagepolicy": "flux-system:connme-chat"}
+  newName: registry.conn-me.ru:5000/websocket-chat:v1.1.19 # {"$imagepolicy": "flux-system:websocket-chat"}

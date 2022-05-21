@@ -2,23 +2,23 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: connme-chat
+  name: websocket-chat
   namespace: flux-system
 spec:
   certSecretRef:
     name: local-registry-cert
-  image: registry.conn-me.ru:5000/connme.ru-chat
+  image: registry.conn-me.ru:5000/websocket-chat
   interval: 1m0s
 
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: connme-chat
+  name: websocket-chat
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: connme-chat
+    name: websocket-chat
   policy:
     semver:
       range: 1.x.x
