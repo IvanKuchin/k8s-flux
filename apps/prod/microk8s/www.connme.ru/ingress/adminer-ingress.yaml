@@ -6,7 +6,7 @@ metadata:
   name: adminer-ingress
 spec:
   rules:
-  - host: adminer.connme.microk8s.conn-me.ru
+  - host: adminer.connme.ru
     http:
       paths:
       - pathType: Prefix

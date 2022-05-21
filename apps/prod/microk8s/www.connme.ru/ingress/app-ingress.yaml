@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: app-ingress-redirect
   annotations:
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.connme.microk8s.conn-me.ru"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.connme.ru"
 spec:
   rules:
-  - host: connme.microk8s.conn-me.ru
+  - host: connme.ru
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -19,10 +19,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.connme.microk8s.conn-me.ru
+    - www.connme.ru
     secretName: https-secret
   rules:
-  - host: www.connme.microk8s.conn-me.ru
+  - host: www.connme.ru
     http:
       paths:
       - pathType: Prefix

@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.connme.microk8s.conn-me.ru
+    - www.connme.ru
     secretName: https-secret
   rules:
-  - host: www.connme.microk8s.conn-me.ru
+  - host: www.connme.ru
     http:
       paths:
       - pathType: Prefix
