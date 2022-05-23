@@ -2,24 +2,24 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: bestbounty-images
+  name: bestbounty-ui
   namespace: flux-system
 spec:
   certSecretRef:
     name: local-registry-cert
-  image: registry.conn-me.ru:5000/www-server-and-expire
+  image: registry.conn-me.ru:5000/bestbounty.ru-ui
   interval: 1m0s
 
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: bestbounty-images
+  name: bestbounty-ui
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: bestbounty-images
+    name: bestbounty-ui
   policy:
     semver:
-      range: 0.x.x
+      range: 1.x.x
 

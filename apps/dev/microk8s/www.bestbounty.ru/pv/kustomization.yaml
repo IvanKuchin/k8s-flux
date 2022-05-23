@@ -1,6 +1,5 @@
 resources:
-- pv-s.yaml
-
-#patchesStrategicMerge:
-#- app-ingress.yaml
-#- app-ingress-redirect.yaml
+- apachelogs-pv.yaml
+- db-pv.yaml
+- goaccess-pv.yaml
+- images-pv.yaml
