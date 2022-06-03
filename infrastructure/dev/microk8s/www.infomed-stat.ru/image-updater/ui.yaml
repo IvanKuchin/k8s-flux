@@ -1,0 +1,25 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: infomed-stat-ui
+  namespace: flux-system
+spec:
+  certSecretRef:
+    name: local-registry-cert
+  image: registry.conn-me.ru:5000/infomed-stat.ru-ui
+  interval: 1m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: infomed-stat-ui
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: infomed-stat-ui
+  policy:
+    semver:
+      range: 1.x.x
+
