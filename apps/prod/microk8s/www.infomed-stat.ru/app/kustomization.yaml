@@ -10,6 +10,6 @@ images:
 - name: admin-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-admin:v1.0.1 # {"$imagepolicy": "flux-system:infomed-stat-admin"}
 - name: www-server-image
-  newName: ghcr.io/ivankuchin/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:infomed-stat-images"}
+  newName: ghcr.io/ivankuchin/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:www-server"}
 - name: cron-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-cron:v1.5.1 # {"$imagepolicy": "flux-system:infomed-stat-cron"}
