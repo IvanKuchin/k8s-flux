@@ -1,0 +1,139 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress-redirect
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.timecard.ru"
+spec:
+  rules:
+  - host: timecard.ru
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - www.timecard.ru
+    secretName: https-secret
+  rules:
+  - host: www.timecard.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /images
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /video
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /helpdesk_ticket_attaches
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /agreements_sow
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /invoices_cc
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /invoices_subc
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /smartway_vouchers
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /templates_agreement_company
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /templates_agreement_sow
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /templates_company
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /templates_costcenter
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /templates_psow
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /templates_sow
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/admin/admin.cgi
+        backend:
+          service:
+            name: admin-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: ui-service
+            port:
+              number: 80

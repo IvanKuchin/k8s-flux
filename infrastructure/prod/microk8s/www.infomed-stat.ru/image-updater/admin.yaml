@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: infomed-stat-admin
+  namespace: flux-system
+spec:
+  image: ghcr.io/ivankuchin/infomed-stat.ru-admin
+  interval: 15m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: infomed-stat-admin
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: infomed-stat-admin
+  policy:
+    semver:
+      range: 1.x.x
+
