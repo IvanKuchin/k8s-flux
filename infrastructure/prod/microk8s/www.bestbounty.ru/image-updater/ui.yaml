@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: bestbounty-ui
+  namespace: flux-system
+spec:
+  image: ghcr.io/ivankuchin/bestbounty.ru-ui
+  interval: 15m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: bestbounty-ui
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: bestbounty-ui
+  policy:
+    semver:
+      range: 1.x.x
+
