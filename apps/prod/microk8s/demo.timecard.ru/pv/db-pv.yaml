@@ -9,20 +9,20 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: www.timecard.ru-db-pv
+  volumeName: demo.timecard.ru-db-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
     type: nfs
-  name: www.timecard.ru-db-pv
+  name: demo.timecard.ru-db-pv
 spec:
   accessModes:
   - ReadWriteOnce
   capacity:
     storage: 10Gi
   nfs:
-    path: /storage_local/www.timecard.ru/mysql
+    path: /storage_local/demo.timecard.ru/mysql
     server: 172.16.17.69
   storageClassName: slow

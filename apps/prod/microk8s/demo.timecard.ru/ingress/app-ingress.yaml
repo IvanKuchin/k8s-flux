@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: app-ingress-redirect
   annotations:
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.timecard.ru"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://demo.timecard.ru"
 spec:
   rules:
   - host: timecard.ru
@@ -19,10 +19,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.timecard.ru
+    - demo.timecard.ru
     secretName: https-secret
   rules:
-  - host: www.timecard.ru
+  - host: demo.timecard.ru
     http:
       paths:
       - pathType: Prefix

@@ -9,20 +9,20 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: www.timecard.ru-images-pv
+  volumeName: demo.timecard.ru-images-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
     type: nfs
-  name: www.timecard.ru-images-pv
+  name: demo.timecard.ru-images-pv
 spec:
   accessModes:
   - ReadWriteMany
   capacity:
     storage: 10Gi
   nfs:
-    path: /storage_local/www.timecard.ru/images
+    path: /storage_local/demo.timecard.ru/images
     server: 172.16.17.69
   storageClassName: slow

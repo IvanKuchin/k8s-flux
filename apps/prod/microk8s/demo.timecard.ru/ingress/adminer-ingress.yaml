@@ -6,7 +6,7 @@ metadata:
   name: adminer-ingress
 spec:
   rules:
-  - host: adminer.timecard.ru
+  - host: demo-adminer.timecard.ru
     http:
       paths:
       - pathType: Prefix

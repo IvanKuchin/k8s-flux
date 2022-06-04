@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.timecard.ru
+    - demo.timecard.ru
     secretName: https-secret
   rules:
-  - host: www.timecard.ru
+  - host: demo.timecard.ru
     http:
       paths:
       - pathType: Prefix
