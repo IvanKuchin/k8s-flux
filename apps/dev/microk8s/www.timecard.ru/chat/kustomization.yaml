@@ -1,0 +1,5 @@
+resources:
+- ../../../../base/engine_cpp/chat
+images:
+- name: chat-image
+  newName: registry.conn-me.ru:5000/websocket-chat:v1.1.20 # {"$imagepolicy": "flux-system:websocket-chat"}

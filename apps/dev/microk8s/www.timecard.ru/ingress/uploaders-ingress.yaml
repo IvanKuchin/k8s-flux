@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: uploaders-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - www.timecard.microk8s.conn-me.ru
+    secretName: https-secret
+  rules:
+  - host: www.timecard.microk8s.conn-me.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /cgi-bin/avataruploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/companylogouploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/generalimageuploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/grouplogouploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/imageuploader.cgi
+        backend:
+          service:
+            name: uploaders-service
+            port:
+              number: 80
