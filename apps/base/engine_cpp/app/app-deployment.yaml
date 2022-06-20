@@ -69,40 +69,6 @@ spec:
           command: ["/bin/sh"]
           args: ["-c", "touch /var/log/backend.log; tail -n+1 -f /var/log/backend.log"]
 
-        - name: log-app-apache-access-container
-          image: busybox
-          securityContext:
-            runAsUser: 65534
-            runAsGroup: 65534
-          volumeMounts:
-          - name: logs-apache-vol
-            mountPath: /var/log
-          command: ["/bin/sh"]
-          args: ["-c", "tail -f /var/log/access.log"]
-          readinessProbe:
-            exec:
-              command: ["test", "-f", "/var/log/access.log"]
-            initialDelaySeconds: 5
-            periodSeconds: 2
-            timeoutSeconds: 1
-
-        - name: log-app-apache-error-container
-          image: busybox
-          securityContext:
-            runAsUser: 65534
-            runAsGroup: 65534
-          volumeMounts:
-          - name: logs-apache-vol
-            mountPath: /var/log
-          command: ["/bin/sh"]
-          args: ["-c", "tail -f /var/log/error.log"]
-          readinessProbe:
-            exec:
-              command: ["test", "-f", "/var/log/error.log"]
-            initialDelaySeconds: 5
-            periodSeconds: 2
-            timeoutSeconds: 1
-
       initContainers:
       - name: init-mysql
         image: busybox
