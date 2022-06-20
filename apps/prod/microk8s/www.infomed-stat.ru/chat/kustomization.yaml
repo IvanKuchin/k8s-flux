@@ -2,4 +2,4 @@ resources:
 - ../../../../base/engine_cpp/chat
 images:
 - name: chat-image
-  newName: ghcr.io/ivankuchin/websocket-chat:v1.0.5 # {"$imagepolicy": "flux-system:websocket-chat"}
+  newName: ghcr.io/ivankuchin/websocket-chat:v1.0.6 # {"$imagepolicy": "flux-system:websocket-chat"}
