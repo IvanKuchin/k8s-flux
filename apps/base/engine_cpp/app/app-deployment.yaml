@@ -30,9 +30,6 @@ spec:
         - name: images-vol
           persistentVolumeClaim:
             claimName: images-pvc
-        - name: logs-apache-vol
-          persistentVolumeClaim:
-            claimName: apachelogs-pvc
         - name: logs-app-vol
           emptyDir: {}
         - name: app-secret
@@ -49,8 +46,6 @@ spec:
           volumeMounts:
           - name: images-vol
             mountPath: /home/httpd/images/html
-          #- name: logs-apache-vol
-          #  mountPath: /home/httpd/www/logs
           - name: logs-app-vol
             mountPath: /usr/local/share/www/log
           - name: app-secret
