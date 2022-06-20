@@ -4,7 +4,7 @@ resources:
   #- chat
   #- backup
   - db
-  - goaccess
+  #- goaccess
   - ingress
   - pv
 namespace: www-timecard-ru

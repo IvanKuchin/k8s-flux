@@ -1,9 +1,10 @@
 resources:
   - adminer
   - app
+  #- chat
   #- backup
   - db
-  - goaccess
+  #- goaccess
   - ingress
   - pv
 namespace: www-bestbounty-ru
