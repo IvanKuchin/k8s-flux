@@ -18,8 +18,8 @@ spec:
       labels:
         type: app
     spec:
-      securityContext:
-        fsGroup: 33    # --- assign group ID to mounted volume
+      #securityContext:
+      #  fsGroup: 33    # --- assign group ID to mounted volume
       imagePullSecrets:
         - name: ghcr-secret
       volumes:
