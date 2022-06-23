@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./apps/dev/microk8s/www.einsteiners.ru
+  path: ./apps/dev/microk8s/www.einsteiners.us
   prune: true
   sourceRef:
     kind: GitRepository
