@@ -9,20 +9,20 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: www.einsteiners.ru-images-pv
+  volumeName: www.einsteiners.us-images-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
     type: nfs
-  name: www.einsteiners.ru-images-pv
+  name: www.einsteiners.us-images-pv
 spec:
   accessModes:
   - ReadWriteMany
   capacity:
     storage: 10Gi
   nfs:
-    path: /storage_local/www.einsteiners.ru/images
+    path: /storage_local/www.einsteiners.us/images
     server: 192.168.170.36
   storageClassName: slow

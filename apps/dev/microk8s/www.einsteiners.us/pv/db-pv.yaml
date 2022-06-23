@@ -9,20 +9,20 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: www.einsteiners.ru-db-pv
+  volumeName: www.einsteiners.us-db-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
     type: nfs
-  name: www.einsteiners.ru-db-pv
+  name: www.einsteiners.us-db-pv
 spec:
   accessModes:
   - ReadWriteOnce
   capacity:
     storage: 10Gi
   nfs:
-    path: /storage_local/www.einsteiners.ru/mysql
+    path: /storage_local/www.einsteiners.us/mysql
     server: 192.168.170.36
   storageClassName: slow
