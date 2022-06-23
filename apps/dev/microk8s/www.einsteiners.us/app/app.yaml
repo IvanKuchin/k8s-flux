@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  
+  labels:
+    type: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: app-pod
+      labels:
+        type: app
+    spec:
+      securityContext:
+        fsGroup: 33    # --- assign group ID to mounted volume
+      imagePullSecrets:
+        - name: ghcr-secret
+      volumes:
+        - name: images-vol
+          persistentVolumeClaim:
+            claimName: images-pvc
+      containers:
+        - name: app-container
+          image: wordpress
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: images-vol
+            mountPath: /var/www/html
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  
+  labels:
+    type: app
+spec:
+  ports:
+  - name: app-service
+    port: 80
+    targetPort: 80
+  selector:
+    type: app
