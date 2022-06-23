@@ -28,6 +28,6 @@ spec:
         path: /
         backend:
           service:
-            name: ui-service
+            name: app-service
             port:
               number: 80
