@@ -64,18 +64,6 @@ spec:
               name: db-volume
             - mountPath: /usr/local/share/run/secrets/
               name: mysql-root-passwd
-          livenessProbe:
-            exec:
-              command: ["mysqladmin", "-u", "guest", "-pguest", "ping"]
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            timeoutSeconds: 5
-          readinessProbe:
-            exec:
-              command: ["mysql", "-h", "127.0.0.1", "-u", "guest", "-pguest", "-e", "SELECT 1"]
-            initialDelaySeconds: 5
-            periodSeconds: 2
-            timeoutSeconds: 1
 ---
 apiVersion: v1
 kind: Service
