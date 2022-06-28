@@ -4,7 +4,7 @@ images:
 - name: app-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-app:v1.5.2 # {"$imagepolicy": "flux-system:infomed-stat-app"}
 - name: uploaders-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-uploaders:v1.5.2 # {"$imagepolicy": "flux-system:infomed-stat-uploaders"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-uploaders:v1.6.0 # {"$imagepolicy": "flux-system:infomed-stat-uploaders"}
 - name: ui-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-ui:v1.2.1 # {"$imagepolicy": "flux-system:infomed-stat-ui"}
 - name: admin-image

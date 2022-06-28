@@ -2,7 +2,7 @@ resources:
 - ../../../../base/engine_cpp/app
 images:
 - name: app-image
-  newName: ghcr.io/ivankuchin/timecard.ru-app:v1.6.5 # {"$imagepolicy": "flux-system:timecard-app"}
+  newName: ghcr.io/ivankuchin/timecard.ru-app:v1.7.0 # {"$imagepolicy": "flux-system:timecard-app"}
 - name: uploaders-image
   newName: ghcr.io/ivankuchin/timecard.ru-uploaders:v1.6.5 # {"$imagepolicy": "flux-system:timecard-uploaders"}
 - name: ui-image
