@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: timecard-api
+  namespace: flux-system
+spec:
+  image: ghcr.io/ivankuchin/timecard.ru-api
+  interval: 15m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: timecard-api
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: timecard-api
+  policy:
+    semver:
+      range: 0.x.x
+

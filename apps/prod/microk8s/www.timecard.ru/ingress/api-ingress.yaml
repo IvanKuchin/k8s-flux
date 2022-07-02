@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    #cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - www.timecard.ru
+    secretName: https-secret
+  rules:
+  - host: www.timecard.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /api/v1
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 80

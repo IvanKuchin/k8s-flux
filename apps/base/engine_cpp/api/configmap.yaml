@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-configmap
+data:
+  cfg.yaml: |
+    listenport: 80
+    serverproto: "http"
+    serverhost: "api-service"
+    serverport: 80
