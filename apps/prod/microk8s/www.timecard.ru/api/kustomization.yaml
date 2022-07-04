@@ -2,4 +2,4 @@ resources:
 - ../../../../base/engine_cpp/api
 images:
 - name: api-image
-  newName: ghcr.io/ivankuchin/timecard.ru-api:v0.1.6 # {"$imagepolicy": "flux-system:timecard-api"}
+  newName: ghcr.io/ivankuchin/timecard.ru-api:v0.1.7 # {"$imagepolicy": "flux-system:timecard-api"}
