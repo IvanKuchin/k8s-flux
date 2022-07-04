@@ -31,7 +31,7 @@ spec:
             - containerPort: 80
           volumeMounts:
           - name: api-volume
-            mountPath: /config
+            mountPath: /workdir/config
 
 ---
 apiVersion: v1
