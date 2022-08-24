@@ -12,4 +12,4 @@ images:
 - name: www-server-image
   newName: ghcr.io/ivankuchin/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:www-server"}
 - name: cron-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-cron:v1.7.0 # {"$imagepolicy": "flux-system:infomed-stat-cron"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-cron:v1.8.0 # {"$imagepolicy": "flux-system:infomed-stat-cron"}
