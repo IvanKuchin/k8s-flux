@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-captcha-configmap
+data:
+  config: |
+    URL = captcha-service:80
