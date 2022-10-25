@@ -35,6 +35,9 @@ spec:
         - name: app-secret
           configMap:
             name: app-secret
+        - name: app-captcha-config
+          configMap:
+            name: app-captcha-configmap
         - name: admin-htpasswd
           configMap:
             name: admin-htpasswd
@@ -50,6 +53,8 @@ spec:
             mountPath: /usr/local/share/www/log
           - name: app-secret
             mountPath: /usr/local/share/www/config/secret
+          - name: app-captcha-config
+            mountPath: /usr/local/share/www/config/captcha
           - name: admin-htpasswd
             mountPath: /etc/apache2/htpasswd
 
