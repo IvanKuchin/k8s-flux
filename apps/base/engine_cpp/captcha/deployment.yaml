@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: captcha-deployment
+  
+  labels:
+    type: captcha
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: captcha
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: captcha-pod
+      labels:
+        type: captcha
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      volumes:
+        - name: captcha-volume
+          configMap:
+            name: captcha-configmap
+      containers:
+        - name: captcha-container
+          image: captcha-image
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: captcha-volume
+            mountPath: /workdir/config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: captcha-service
+  
+  labels:
+    type: captcha
+spec:
+  ports:
+  - name: captcha-service
+    port: 80
+    targetPort: 80
+  selector:
+    type: captcha

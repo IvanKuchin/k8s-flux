@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: captcha-configmap
+data:
+  cfg.yaml: |
+    listenport: 80
+    serverproto: "http"
+    serverhost: "0.0.0.0"
+    serverport: 80
