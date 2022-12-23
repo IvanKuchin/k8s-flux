@@ -54,4 +54,4 @@ spec:
       initContainers:
       - name: init-mysql
         image: busybox
-        command: ['sh', '-c', 'until nslookup db-service; do echo waiting for mysql; sleep 2; done;']
+        command: ['sh', '-c', 'until nslookup db-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done;']
