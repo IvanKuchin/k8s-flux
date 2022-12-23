@@ -59,7 +59,7 @@ spec:
             mountPath: /etc/apache2/htpasswd
 
         - name: log-app-container
-          image: busybox
+          image: busybox:latest
           securityContext:
             runAsUser: 33
             runAsGroup: 33
@@ -71,8 +71,8 @@ spec:
 
       initContainers:
       - name: init-mysql
-        image: busybox
-        command: ['sh', '-c', 'until nslookup db-service; do echo waiting for mysql; sleep 2; done;']
+        image: busybox:latest
+        command: ['sh', '-c', 'until nslookup db-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done;']
 
 ---
 apiVersion: v1
