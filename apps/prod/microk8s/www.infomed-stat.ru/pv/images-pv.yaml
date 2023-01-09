@@ -23,6 +23,6 @@ spec:
   capacity:
     storage: 10Gi
   nfs:
-    path: /storage_local/www.infomed-stat.ru/images
-    server: 172.16.17.69
+    path: /storage1/www.infomed-stat.ru/images
+    server: 172.16.17.70
   storageClassName: slow
