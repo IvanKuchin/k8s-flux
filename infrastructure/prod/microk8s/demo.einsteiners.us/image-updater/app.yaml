@@ -17,6 +17,8 @@ metadata:
 spec:
   imageRepositoryRef:
     name: demo-einsteiners-app
+  filterTags:
+    pattern: '^[0-9]+T[0-9]+$'
   policy:
     alphabetical:
       order: asc
