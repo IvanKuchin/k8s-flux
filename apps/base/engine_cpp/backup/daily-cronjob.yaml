@@ -39,13 +39,13 @@ spec:
               mountPath: /ssh-identity
             command: ["/bin/sh", "-c"]
             args: ["cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime
-                    && rsync -rptoDzh --delete -e \"ssh -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no'\"  /storage_local/images/ ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/rsync/
+                    #&& rsync -rptoDzh --delete -e \"ssh -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no'\"  /storage_local/images/ ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/rsync/
                     && mysqldump --add-drop-table -Q -h db-service -u backup -pbackup www | gzip > mysql_dump_`date +%Y%m%d%H%M%S`.gz
-                    && tar -czf images_`date +%Y%m%d%H%M%S`.tar.gz /storage_local/images/
+                    #&& tar -czf images_`date +%Y%m%d%H%M%S`.tar.gz /storage_local/images/
                     && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' mysql_*.gz ikuchin@172.16.17.70:/storage2/backup/${NAMESPACE}/mysql/
-                    && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' images_*.gz ikuchin@172.16.17.70:/storage2/backup/${NAMESPACE}/images/
+                    #&& scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' images_*.gz ikuchin@172.16.17.70:/storage2/backup/${NAMESPACE}/images/
                     && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' mysql_*.gz ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/mysql/
-                    && if [[ $(date +%u) -eq 6 ]]; then scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' images_*.gz ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/images/; fi
+                    #&& if [[ $(date +%u) -eq 6 ]]; then scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' images_*.gz ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/images/; fi
                     "]
             resources:
               limits:
