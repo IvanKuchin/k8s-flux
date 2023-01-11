@@ -1,0 +1,8 @@
+resources:
+  - app-deployment.yaml
+  - images-pvc.yaml
+
+images:
+- name: app-image
+  newName: ghcr.io/ivankuchin/einsteiners.us-stage # {"$imagepolicy": "flux-system:demo-einsteiners-app"}
+

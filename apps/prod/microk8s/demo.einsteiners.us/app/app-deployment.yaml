@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  
+  labels:
+    type: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: app-pod
+      labels:
+        type: app
+    spec:
+      securityContext:
+        fsGroup: 33    # --- assign group ID to mounted volume
+      hostAliases:
+      - ip: "172.16.17.68"
+        hostnames:
+        - "mail"
+      imagePullSecrets:
+        - name: ghcr-secret
+      volumes:
+        - name: images-vol
+          persistentVolumeClaim:
+            claimName: images-pvc
+        #- name: logs-apache-vol
+        #  persistentVolumeClaim:
+        #    claimName: apachelogs-pvc
+        #- name: logs-app-vol
+        #  emptyDir: {}
+        - name: app-secret
+          configMap:
+            name: app-secret
+        #- name: admin-htpasswd
+        #  configMap:
+        #    name: admin-htpasswd
+      containers:
+        - name: app-container
+          image: app-image
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: images-vol
+            mountPath: /var/www/html/storage/app/public
+          #- name: logs-apache-vol
+          #  mountPath: /home/httpd/www/logs
+          #- name: logs-app-vol
+          #  mountPath: /usr/local/share/www/log
+          - name: app-secret
+            mountPath: /var/www/html/config_env
+          #- name: admin-htpasswd
+          #  mountPath: /etc/apache2/htpasswd
+        #- name: log-app-apache-access-container
+        #  image: busybox
+        #  securityContext:
+        #    runAsUser: 65534
+        #    runAsGroup: 65534
+        #  volumeMounts:
+        #  - name: logs-apache-vol
+        #    mountPath: /var/log
+        #  args:
+        #  - /bin/sh
+        #  - -c
+        #  - >
+        #      touch /var/log/access.log;
+        #      tail -n+1 -f /var/log/access.log;
+        #- name: log-app-apache-error-container
+        #  image: busybox
+        #  securityContext:
+        #    runAsUser: 65534
+        #    runAsGroup: 65534
+        #  volumeMounts:
+        #  - name: logs-apache-vol
+        #    mountPath: /var/log
+        #  args:
+        #  - /bin/sh
+        #  - -c
+        #  - >
+        #      touch /var/log/error.log;
+        #      tail -n+1 -f /var/log/error.log;
+      initContainers:
+      - name: init-mysql
+        image: busybox
+        command: ['sh', '-c', 'until nslookup db-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done;']
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  
+  labels:
+    type: app
+spec:
+  ports:
+  - name: app-service
+    port: 80
+    targetPort: 8000
+  selector:
+    type: app

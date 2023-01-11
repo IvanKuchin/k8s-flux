@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: demo.einsteiners.us-db-pv
+  labels:
+    type: nfs
+spec:
+  storageClassName: slow
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  #mountOptions:
+  #    - hard
+  nfs:
+    path: /storage1/demo.einsteiners.us/mysql
+    server: 172.16.17.70
+  claimRef:
+    name: db-pvc
+    namespace: demo-einsteiners-us
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: demo.einsteiners.us-images-pv
+  labels:
+    type: nfs
+spec:
+  storageClassName: slow
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  #mountOptions:
+  #    - hard
+  nfs:
+    path: /storage1/demo.einsteiners.us/images
+    server: 172.16.17.70
+  claimRef:
+    name: images-pvc
+    namespace: demo-einsteiners-us
