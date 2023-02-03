@@ -5,6 +5,7 @@ resources:
   - chat
   - backup
   - db
+  - go-migrate
   #- goaccess
   - ingress
   - pv

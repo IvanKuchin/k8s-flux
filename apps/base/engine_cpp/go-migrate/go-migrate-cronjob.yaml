@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: go-migrate-hourly-cronjob
+spec:
+  schedule: "0 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          volumes:
+            - name: mysql-root-passwd
+              configMap:
+                name: mysql-root-passwd
+          containers:
+            - name: migrate
+              image: migrate/migrate
+              command:
+                - "/bin/sh"
+                - "-c"
+                - "migrate 
+                          -source=github://ivankuchin/$(sed 's/^\\([a-zA-Z0-9]*\\)-\\(.*\\)-\\([a-zA-Z0-9]*\\)$/\\1.\\2.\\3/' /var/run/secrets/kubernetes.io/serviceaccount/namespace)-db 
+                          -database=mysql://root:$(cat /usr/local/share/run/secrets/mysql-root)@tcp\\(db-service:3306\\)/www 
+                          up"
+              volumeMounts:
+                - mountPath: /usr/local/share/run/secrets/
+                  name: mysql-root-passwd
+          restartPolicy: Never
