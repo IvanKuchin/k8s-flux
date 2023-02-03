@@ -6,7 +6,7 @@ images:
 - name: uploaders-image
   newName: ghcr.io/ivankuchin/connme.ru-uploaders:v1.7.0 # {"$imagepolicy": "flux-system:connme-uploaders"}
 - name: ui-image
-  newName: ghcr.io/ivankuchin/connme.ru-ui:v1.3.2 # {"$imagepolicy": "flux-system:connme-ui"}
+  newName: ghcr.io/ivankuchin/connme.ru-ui:v1.4.0 # {"$imagepolicy": "flux-system:connme-ui"}
 - name: admin-image
   newName: ghcr.io/ivankuchin/connme.ru-admin:v1.0.6 # {"$imagepolicy": "flux-system:connme-admin"}
 - name: www-server-image
