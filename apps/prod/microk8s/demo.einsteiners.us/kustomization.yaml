@@ -3,6 +3,7 @@ resources:
   - app
   - backup
   - db
+  - go-migrate
   #- goaccess
   - ingress
   - pv
