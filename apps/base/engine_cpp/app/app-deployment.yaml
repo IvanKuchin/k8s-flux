@@ -38,9 +38,6 @@ spec:
         - name: app-captcha-config
           configMap:
             name: app-captcha-configmap
-        - name: admin-htpasswd
-          configMap:
-            name: admin-htpasswd
       containers:
         - name: app-container
           image: app-image
@@ -55,8 +52,6 @@ spec:
             mountPath: /usr/local/share/www/config/secret
           - name: app-captcha-config
             mountPath: /usr/local/share/www/config/captcha
-          - name: admin-htpasswd
-            mountPath: /etc/apache2/htpasswd
 
         - name: log-app-container
           image: busybox:latest

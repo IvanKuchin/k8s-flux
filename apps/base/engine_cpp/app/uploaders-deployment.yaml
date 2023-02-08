@@ -35,9 +35,6 @@ spec:
         - name: app-secret
           configMap:
             name: app-secret
-        - name: admin-htpasswd
-          configMap:
-            name: admin-htpasswd
       containers:
         - name: uploaders-container
           image: uploaders-image
@@ -50,8 +47,6 @@ spec:
             mountPath: /usr/local/share/www/log
           - name: app-secret
             mountPath: /usr/local/share/www/config/secret
-          - name: admin-htpasswd
-            mountPath: /etc/apache2/htpasswd
 
         - name: log-app-container
           image: busybox
