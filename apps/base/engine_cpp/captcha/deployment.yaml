@@ -6,6 +6,9 @@ metadata:
   labels:
     type: captcha
 spec:
+  # do NOT scale it up. 
+  # this container must keep state from providing captcha image till checking the entered code
+  # there is no shared storage in the current implementation
   replicas: 1
   selector:
     matchLabels:
