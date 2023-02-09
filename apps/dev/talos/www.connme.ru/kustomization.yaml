@@ -1,0 +1,10 @@
+resources:
+  - adminer
+  - app
+  - chat
+  #- backup
+  - db
+  - go-migrate
+  - ingress
+  - pv
+namespace: www-connme-ru

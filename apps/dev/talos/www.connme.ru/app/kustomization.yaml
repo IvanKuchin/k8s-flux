@@ -1,0 +1,15 @@
+resources:
+- ../../../../base/engine_cpp/app
+images:
+- name: app-image
+  newName: ghcr.io/ivankuchin/connme.ru-app:latest # {"$imagepolicy": "flux-system:connme-app"}
+- name: uploaders-image
+  newName: ghcr.io/ivankuchin/connme.ru-uploaders:latest # {"$imagepolicy": "flux-system:connme-uploaders"}
+- name: ui-image
+  newName: ghcr.io/ivankuchin/connme.ru-ui:latest # {"$imagepolicy": "flux-system:connme-ui"}
+- name: admin-image
+  newName: ghcr.io/ivankuchin/connme.ru-admin:latest # {"$imagepolicy": "flux-system:connme-admin"}
+- name: www-server-image
+  newName: ghcr.io/ivankuchin/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:www-server"}
+- name: cron-image
+  newName: ghcr.io/ivankuchin/connme.ru-cron:latest # {"$imagepolicy": "flux-system:connme-cron"}
