@@ -6,7 +6,7 @@ images:
 - name: uploaders-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-uploaders:v1.9.3 # {"$imagepolicy": "flux-system:infomed-stat-uploaders"}
 - name: ui-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-ui:v1.6.4 # {"$imagepolicy": "flux-system:infomed-stat-ui"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-ui:v1.6.5 # {"$imagepolicy": "flux-system:infomed-stat-ui"}
 - name: admin-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-admin:v1.0.1 # {"$imagepolicy": "flux-system:infomed-stat-admin"}
 - name: www-server-image
