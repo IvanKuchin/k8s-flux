@@ -27,6 +27,14 @@ spec:
       containers:
         - name: db-container
           image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "0.5"
+            limits:
+              memory: "512Mi"
+              cpu: "0.5"
           ports:
             - containerPort: 3306
           args:
@@ -44,13 +52,19 @@ spec:
               name: mysql-root-passwd
           livenessProbe:
             exec:
-              command: ["mysqladmin", "-u", "guest", "-pguest", "ping"]
+              command:
+              - "/bin/sh"
+              - "-c"
+              - "mysql -h 127.0.0.1 -u root -p$(cat /usr/local/share/run/secrets/mysql-root) -e \"SELECT 1\""
             initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
           readinessProbe:
             exec:
-              command: ["mysql", "-h", "127.0.0.1", "-u", "guest", "-pguest", "-e", "SELECT 1"]
+              command:
+              - "/bin/sh"
+              - "-c"
+              - "mysql -h 127.0.0.1 -u root -p$(cat /usr/local/share/run/secrets/mysql-root) -e \"SELECT 1\""
             initialDelaySeconds: 5
             periodSeconds: 2
             timeoutSeconds: 1
