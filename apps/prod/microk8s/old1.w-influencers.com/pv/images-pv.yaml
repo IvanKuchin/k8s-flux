@@ -9,20 +9,20 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: www.w-influencers.com-images-pv
+  volumeName: old1.w-influencers.com-images-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
     type: nfs
-  name: www.w-influencers.com-images-pv
+  name: old1.w-influencers.com-images-pv
 spec:
   accessModes:
   - ReadWriteMany
   capacity:
     storage: 10Gi
   nfs:
-    path: /storage1/www.w-influencers.com/images
+    path: /storage1/old1.w-influencers.com/images
     server: 172.16.17.70
   storageClassName: slow

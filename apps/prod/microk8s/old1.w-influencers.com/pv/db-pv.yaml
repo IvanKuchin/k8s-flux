@@ -9,20 +9,20 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: www.w-influencers.com-db-pv
+  volumeName: old1.w-influencers.com-db-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
     type: nfs
-  name: www.w-influencers.com-db-pv
+  name: old1.w-influencers.com-db-pv
 spec:
   accessModes:
   - ReadWriteOnce
   capacity:
     storage: 10Gi
   nfs:
-    path: /storage1/www.w-influencers.com/mysql
+    path: /storage1/old1.w-influencers.com/mysql
     server: 172.16.17.70
   storageClassName: slow
