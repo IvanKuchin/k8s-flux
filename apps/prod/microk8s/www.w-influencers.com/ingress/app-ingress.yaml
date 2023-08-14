@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: app-ingress-redirect
   annotations:
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://old1.w-influencers.com"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.w-influencers.com"
 spec:
   rules:
   - host: w-influencers.com
@@ -18,10 +18,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - old1.w-influencers.com
+    - www.w-influencers.com
     secretName: https-secret
   rules:
-  - host: old1.w-influencers.com
+  - host: www.w-influencers.com
     http:
       paths:
       - pathType: Prefix
