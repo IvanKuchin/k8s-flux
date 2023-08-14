@@ -5,4 +5,4 @@ resources:
   - db
   - ingress
   - pv
-namespace: www-w-influencers-com
+namespace: old1-w-influencers-com
