@@ -6,7 +6,7 @@ metadata:
   name: adminer-ingress
 spec:
   rules:
-  - host: adminer.w-influencers.com
+  - host: old1-adminer.w-influencers.com
     http:
       paths:
       - pathType: Prefix
