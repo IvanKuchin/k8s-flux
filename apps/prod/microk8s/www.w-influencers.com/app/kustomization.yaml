@@ -1,6 +1,5 @@
 resources:
 - ui-deployment.yaml
-
 images:
 - name: ui-image
-  newName: ghcr.io/ivankuchin/www.w-influencers.com:v0.1.2 # {"$imagepolicy": "flux-system:www-w-influencers-com"}
+  newName: ghcr.io/ivankuchin/www.w-influencers.com:v0.1.3 # {"$imagepolicy": "flux-system:www-w-influencers-com"}
