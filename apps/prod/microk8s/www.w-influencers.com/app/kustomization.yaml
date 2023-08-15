@@ -1,5 +1,5 @@
 resources:
-- ui.yaml
+- ui-deployment.yaml
 
 images:
 - name: app-image
