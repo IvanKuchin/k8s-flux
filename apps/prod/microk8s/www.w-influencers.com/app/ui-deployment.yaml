@@ -24,6 +24,7 @@ spec:
         - "mail"
       imagePullSecrets:
         - name: ghcr-secret
+      imagePullPolicy: IfNotPresent
       containers:
         - name: ui-container
           image: ui-image
