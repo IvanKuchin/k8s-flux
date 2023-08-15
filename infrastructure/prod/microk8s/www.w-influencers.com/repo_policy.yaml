@@ -5,7 +5,7 @@ metadata:
   name: www-w-influencers-com
   namespace: flux-system
 spec:
-  image: ghcr.io/ivankuchin/www.w-influnecers.com
+  image: ghcr.io/ivankuchin/www.w-influencers.com
   interval: 15m0s
 
 ---
