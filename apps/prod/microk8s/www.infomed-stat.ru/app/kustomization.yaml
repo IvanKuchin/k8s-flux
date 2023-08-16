@@ -2,14 +2,14 @@ resources:
 - ../../../../base/engine_cpp/app
 images:
 - name: app-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-app:v1.11.0 # {"$imagepolicy": "flux-system:infomed-stat-app"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-app:v1.11.1 # {"$imagepolicy": "flux-system:infomed-stat-app"}
 - name: uploaders-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-uploaders:v1.11.0 # {"$imagepolicy": "flux-system:infomed-stat-uploaders"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-uploaders:v1.11.1 # {"$imagepolicy": "flux-system:infomed-stat-uploaders"}
 - name: ui-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-ui:v1.9.1 # {"$imagepolicy": "flux-system:infomed-stat-ui"}
 - name: admin-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-admin:v1.0.1 # {"$imagepolicy": "flux-system:infomed-stat-admin"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-admin:v1.0.2 # {"$imagepolicy": "flux-system:infomed-stat-admin"}
 - name: www-server-image
   newName: ghcr.io/ivankuchin/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:www-server"}
 - name: cron-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-cron:v1.11.0 # {"$imagepolicy": "flux-system:infomed-stat-cron"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-cron:v1.11.1 # {"$imagepolicy": "flux-system:infomed-stat-cron"}
