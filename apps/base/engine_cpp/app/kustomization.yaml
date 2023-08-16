@@ -7,3 +7,6 @@ resources:
 - cron-deployment.yaml
 - images-deployment.yaml
 
+images:
+- name: __busybox
+  newName: busybox:1.36
