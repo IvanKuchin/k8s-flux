@@ -1,2 +1,6 @@
 resources:
 - deployment.yaml
+
+images:
+- name: __busybox
+  newName: busybox:1.36
