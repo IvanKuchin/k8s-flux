@@ -1,8 +1,4 @@
 resources:
-  - adminer
   - app
-  - backup
-  - db
   - ingress
-  - pv
 namespace: www-w-influencers-com

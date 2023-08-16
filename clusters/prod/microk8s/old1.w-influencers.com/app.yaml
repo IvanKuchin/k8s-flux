@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: www-w-influencers-com-app
+  name: old1-w-influencers-app
   namespace: flux-system
 spec:
-  interval: 15m0s
-  path: ./apps/prod/microk8s/www.w-influencers.com
+  interval: 60m0s
+  path: ./apps/prod/microk8s/old1.w-influencers.com
   prune: true
   sourceRef:
     kind: GitRepository

@@ -1,16 +1,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-ingress-redirect
-  annotations:
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.w-influencers.com"
-spec:
-  rules:
-  - host: w-influencers.com
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: app-ingress
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
@@ -18,16 +8,16 @@ metadata:
 spec:
   tls:
   - hosts:
-    - www.w-influencers.com
+    - old1.w-influencers.com
     secretName: https-secret
   rules:
-  - host: www.w-influencers.com
+  - host: old1.w-influencers.com
     http:
       paths:
       - pathType: Prefix
         path: /
         backend:
           service:
-            name: ui-service
+            name: app-service
             port:
               number: 80

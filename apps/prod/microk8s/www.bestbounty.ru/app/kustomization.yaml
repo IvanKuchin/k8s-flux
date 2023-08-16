@@ -2,14 +2,14 @@ resources:
 - ../../../../base/engine_cpp/app
 images:
 - name: app-image
-  newName: ghcr.io/ivankuchin/bestbounty.ru-app:v1.2.0 # {"$imagepolicy": "flux-system:bestbounty-app"}
+  newName: ghcr.io/ivankuchin/bestbounty.ru-app:v1.3.0 # {"$imagepolicy": "flux-system:bestbounty-app"}
 - name: uploaders-image
-  newName: ghcr.io/ivankuchin/bestbounty.ru-uploaders:v1.2.0 # {"$imagepolicy": "flux-system:bestbounty-uploaders"}
+  newName: ghcr.io/ivankuchin/bestbounty.ru-uploaders:v1.3.0 # {"$imagepolicy": "flux-system:bestbounty-uploaders"}
 - name: ui-image
   newName: ghcr.io/ivankuchin/bestbounty.ru-ui:v1.1.1 # {"$imagepolicy": "flux-system:bestbounty-ui"}
 - name: admin-image
-  newName: ghcr.io/ivankuchin/bestbounty.ru-admin:v1.0.3 # {"$imagepolicy": "flux-system:bestbounty-admin"}
+  newName: ghcr.io/ivankuchin/bestbounty.ru-admin:v1.0.4 # {"$imagepolicy": "flux-system:bestbounty-admin"}
 - name: www-server-image
   newName: ghcr.io/ivankuchin/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:www-server"}
 - name: cron-image
-  newName: ghcr.io/ivankuchin/bestbounty.ru-cron:v1.2.0 # {"$imagepolicy": "flux-system:bestbounty-cron"}
+  newName: ghcr.io/ivankuchin/bestbounty.ru-cron:v1.3.0 # {"$imagepolicy": "flux-system:bestbounty-cron"}
