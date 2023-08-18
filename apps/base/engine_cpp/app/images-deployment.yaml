@@ -41,7 +41,7 @@ spec:
             - name: logs-apache-vol
               mountPath: "/home/httpd/images/logs"
         - name: log-images-apache-access-container
-          image: __busybox
+          image: busybox-image
           securityContext:
             runAsUser: 65534
             runAsGroup: 65534
@@ -55,7 +55,7 @@ spec:
               touch /var/log/access.log;
               tail -n+1 -f /var/log/access.log;
         - name: log-images-apache-error-container
-          image: __busybox
+          image: busybox-image
           securityContext:
             runAsUser: 65534
             runAsGroup: 65534

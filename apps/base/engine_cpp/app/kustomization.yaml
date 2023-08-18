@@ -6,7 +6,10 @@ resources:
 - admin-deployment.yaml
 - cron-deployment.yaml
 - images-deployment.yaml
+- domain-name-deployment.yaml
 
 images:
-- name: __busybox
+- name: busybox-image
   newName: busybox:1.36
+- name: domain-name-image
+  newName: domain-name:0.0.1  # {"$imagepolicy": "flux-system:domain-name"}
