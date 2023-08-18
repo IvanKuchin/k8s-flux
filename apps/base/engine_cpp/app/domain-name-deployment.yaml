@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: domain-name
+  
+  labels:
+    type: domain-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: domain-name
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: domain-name
+      labels:
+        type: domain-name
+    spec:
+      containers:
+        - name: app
+          image: domain-name-image
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "50m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: domain-name
+  
+  labels:
+    type: domain-name
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    type: domain-name
