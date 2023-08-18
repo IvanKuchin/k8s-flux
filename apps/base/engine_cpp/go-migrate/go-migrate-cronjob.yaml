@@ -18,7 +18,7 @@ spec:
                 name: mysql-root-passwd
           containers:
             - name: migrate
-              image: migrate/migrate
+              image: go-migrate-image
               command:
                 - "/bin/sh"
                 - "-c"
