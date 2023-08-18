@@ -1,0 +1,5 @@
+resources:
+- ../../../../base/engine_cpp/chat
+images:
+- name: chat-image
+  newName: websocket-chat

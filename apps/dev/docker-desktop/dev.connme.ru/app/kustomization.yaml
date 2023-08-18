@@ -1,0 +1,17 @@
+resources:
+- ../../../../base/engine_cpp/app
+images:
+- name: app-image
+  newName: connme.ru-app
+- name: uploaders-image
+  newName: connme.ru-uploaders
+- name: ui-image
+  newName: connme.ru-ui
+- name: admin-image
+  newName: connme.ru-admin
+- name: www-server-image
+  newName: www-server-and-expire
+- name: cron-image
+  newName: connme.ru-cron
+- name: domain-name-image
+  newName: domain-name

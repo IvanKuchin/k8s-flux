@@ -1,0 +1,11 @@
+resources:
+  - adminer
+  - app
+  - captcha
+
+  # - chat
+  - db
+  # - go-migrate
+  - ingress
+  - pv
+# namespace: dev-connme-ru           # it will be set by scaffold

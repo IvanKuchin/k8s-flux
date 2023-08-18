@@ -1,0 +1,10 @@
+resources:
+- db-pv.yaml
+- images-pv.yaml
+#- apachelogs-pv.yaml
+#- goaccess-pv.yaml
+
+
+#patchesStrategicMerge:
+#- app-ingress.yaml
+#- app-ingress-redirect.yaml
