@@ -2,5 +2,4 @@ resources:
 - ../../../../base/engine_cpp/go-migrate
 images:
 - name: go-migrate-image
-  newName: migrate/migrate:v4.0.0 # {"$imagepolicy": "flux-system:go-migrate"}
-
+  newName: migrate/migrate:v4.16.2 # {"$imagepolicy": "flux-system:go-migrate"}
