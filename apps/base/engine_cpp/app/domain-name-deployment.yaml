@@ -31,7 +31,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: domain-name
+  name: domain-name-service
   
   labels:
     type: domain-name
@@ -39,6 +39,6 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 80
+    targetPort: 1025
   selector:
     type: domain-name
