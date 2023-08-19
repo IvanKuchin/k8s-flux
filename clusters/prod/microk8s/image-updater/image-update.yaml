@@ -47,6 +47,6 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./apps/prod/base
+    path: ./apps/base/
     strategy: Setters
 
