@@ -1,7 +1,5 @@
 resources:
 - deployment.yaml
-
 images:
 - name: busybox-image
-  newName: busybox:1.33.1  # {"$imagepolicy": "flux-system:busybox"}
-
+  newName: busybox:1.34.1 # {"$imagepolicy": "flux-system:busybox"}
