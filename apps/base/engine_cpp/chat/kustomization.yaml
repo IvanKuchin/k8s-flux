@@ -3,5 +3,5 @@ resources:
 
 images:
 - name: busybox-image
-  newName: busybox:1.35.1  # {"$imagepolicy": "flux-system:busybox"}
+  newName: busybox:1.33.1  # {"$imagepolicy": "flux-system:busybox"}
 
