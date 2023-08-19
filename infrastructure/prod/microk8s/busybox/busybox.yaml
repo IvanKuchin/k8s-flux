@@ -19,5 +19,5 @@ spec:
     name: busybox
   policy:
     semver:
-      range: x.x.x
+      range: 1.35.x
 
