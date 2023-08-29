@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "www.connectopia.org"
+  - host: "www.connectopia.dev"
     http:
       paths:
       - pathType: Prefix
@@ -22,7 +22,7 @@ spec:
             name: api
             port:
               number: 80
-  - host: "docs.connectopia.org"
+  - host: "docs.connectopia.dev"
     http:
       paths:
       - pathType: Prefix
