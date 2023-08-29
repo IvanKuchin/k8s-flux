@@ -1,0 +1,5 @@
+resources:
+- cron.yaml
+images:
+- name: busybox-image
+  newName: busybox:1.36.1 # {"$imagepolicy": "flux-system:busybox"}

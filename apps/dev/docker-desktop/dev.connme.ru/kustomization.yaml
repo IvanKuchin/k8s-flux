@@ -2,9 +2,10 @@ resources:
   - adminer
   - app
   - captcha
-  - chat
+  # - chat
   - db
   # - go-migrate
+  - connectopia-registration
   - ingress
   - pv
 namespace: dev-connme-ru           # it will be set by scaffold

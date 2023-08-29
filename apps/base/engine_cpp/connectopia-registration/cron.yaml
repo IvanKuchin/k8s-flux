@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: connectopia-registration-hourly-cronjob
+spec:
+  schedule: "2 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          containers:
+            - name: app
+              image: busybox-image
+              command:
+                - "/bin/sh"
+                - "-c"
+                - "v1=`wget http://domain-name-service/api/v1/domain -q -O -` 
+                   && echo current domain is $v1 
+                   && wget --post-data '{\"domain\":\"'$v1'\"}' http://www.connectopia.org/api/v1/register -q -O -"
+          restartPolicy: Never
