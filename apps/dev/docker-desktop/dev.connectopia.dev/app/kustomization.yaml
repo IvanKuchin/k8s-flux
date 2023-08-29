@@ -1,0 +1,4 @@
+resources:
+  - api.yaml
+  - docs.yaml
+  - frontend.yaml

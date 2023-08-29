@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-topia
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "www.connectopia.org"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/api/"
+        backend:
+          service:
+            name: api
+            port:
+              number: 80
+  - host: "docs.connectopia.org"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: docs
+            port:
+              number: 80
