@@ -12,7 +12,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/adminer123"
+        path: "/adminer"
         backend:
           service:
             name: adminer-service
