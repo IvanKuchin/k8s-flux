@@ -20,5 +20,5 @@ spec:
                 - "-c"
                 - "v1=`wget http://domain-name-service/api/v1/domain -q -O -` 
                    && echo current domain is $v1 
-                   && wget --post-data '{\"domain\":\"'$v1'\"}' http://www.connectopia.org/api/v1/register -q -O -"
+                   && wget --post-data '{\"domain\":\"'$v1'\"}' http://www.connectopia.social/api/v1/register -q -O -"
           restartPolicy: Never

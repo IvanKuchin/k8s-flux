@@ -68,6 +68,13 @@ spec:
             port:
               number: 80
       - pathType: Prefix
+        path: /api/v1/domain
+        backend:
+          service:
+            name: domain-name-service
+            port:
+              number: 80
+      - pathType: Prefix
         path: /
         backend:
           service:

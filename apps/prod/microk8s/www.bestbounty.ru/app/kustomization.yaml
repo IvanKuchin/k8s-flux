@@ -6,7 +6,7 @@ images:
 - name: uploaders-image
   newName: ghcr.io/ivankuchin/bestbounty.ru-uploaders:v1.3.0 # {"$imagepolicy": "flux-system:bestbounty-uploaders"}
 - name: ui-image
-  newName: ghcr.io/ivankuchin/bestbounty.ru-ui:v1.1.1 # {"$imagepolicy": "flux-system:bestbounty-ui"}
+  newName: ghcr.io/ivankuchin/bestbounty.ru-ui:v1.2.0 # {"$imagepolicy": "flux-system:bestbounty-ui"}
 - name: admin-image
   newName: ghcr.io/ivankuchin/bestbounty.ru-admin:v1.0.4 # {"$imagepolicy": "flux-system:bestbounty-admin"}
 - name: www-server-image

@@ -6,6 +6,7 @@ resources:
   - backup
   - db
   - go-migrate
+  - connectopia-registration
   #- goaccess
   - ingress
   - pv
