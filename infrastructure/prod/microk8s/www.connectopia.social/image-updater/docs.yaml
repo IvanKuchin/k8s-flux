@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: connectopia-docs
+  namespace: flux-system
+spec:
+  image: ghcr.io/connectopia-social/www.connectopia.social-docs
+  interval: 15m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: connectopia-docs
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: connectopia-docs
+  policy:
+    semver:
+      range: 0.x.x
+
