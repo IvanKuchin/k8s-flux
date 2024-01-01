@@ -8,4 +8,4 @@ images:
   - name: docs-image
     newName: ghcr.io/connectopia-social/www.connectopia.social-docs:v0.1.4 # {"$imagepolicy": "flux-system:connectopia-docs"}
   - name: ui-image
-    newName: ghcr.io/connectopia-social/www.connectopia.social-ui:v0.1.4 # {"$imagepolicy": "flux-system:connectopia-ui"}
+    newName: ghcr.io/connectopia-social/www.connectopia.social-ui:v0.1.5 # {"$imagepolicy": "flux-system:connectopia-ui"}
