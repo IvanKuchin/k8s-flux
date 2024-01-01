@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: docs
-        image: docs
+        image: docs-image
         ports:
         - containerPort: 80
 ---

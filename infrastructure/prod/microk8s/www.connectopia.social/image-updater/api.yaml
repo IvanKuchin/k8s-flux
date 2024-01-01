@@ -2,7 +2,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: connectopia-app
+  name: connectopia-api
   namespace: flux-system
 spec:
   image: ghcr.io/connectopia-social/www.connectopia.social-api
@@ -12,11 +12,11 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: connectopia-app
+  name: connectopia-api
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: connectopia-app
+    name: connectopia-api
   policy:
     semver:
       range: 0.x.x

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: api
+        image: api-image
         ports:
         - containerPort: 80
 ---
