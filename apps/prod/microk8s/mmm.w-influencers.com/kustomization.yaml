@@ -1,0 +1,4 @@
+resources:
+  - app
+  - ingress
+namespace: mmm-w-influencers-com
