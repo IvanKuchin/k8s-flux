@@ -42,7 +42,7 @@ spec:
                     && cd `mktemp -d`
                     && mysqldump --add-drop-table -Q -h db-service -u backup -pbackup www | gzip > `date +%Y%m%d%H%M%S`.gz
                     && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' *.gz ikuchin@172.16.17.70:/storage2/backup/${NAMESPACE}/mysql/
-                    && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' *.gz ikuchin@192.168.168.12:/storage/ikuchin/backup/${NAMESPACE}/mysql/
+                    && scp -i /ssh-identity/id_rsa -o 'StrictHostKeyChecking no' *.gz ikuchin@192.168.168.12:/storage/ikuchin/backup/web-sites/${NAMESPACE}/mysql/
                     "]
             resources:
               limits:
