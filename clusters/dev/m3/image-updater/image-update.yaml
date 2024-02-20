@@ -21,6 +21,6 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./apps/dev/microk8s
+    path: ./apps/dev/m3
     strategy: Setters
 
