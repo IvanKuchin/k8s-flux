@@ -1,0 +1,7 @@
+resources:
+- app-ingress.yaml
+- uploaders-ingress.yaml
+- admin-ingress.yaml
+- adminer-ingress.yaml
+
+
