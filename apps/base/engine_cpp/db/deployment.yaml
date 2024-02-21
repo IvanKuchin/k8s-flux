@@ -50,15 +50,15 @@ spec:
               name: db-volume
             - mountPath: /usr/local/share/run/secrets/
               name: mysql-root-passwd
-          livenessProbe:
-            exec:
-              command:
-              - "/bin/sh"
-              - "-c"
-              - "mysql -h 127.0.0.1 -u root -p$(cat /usr/local/share/run/secrets/mysql-root) -e \"SELECT 1\""
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            timeoutSeconds: 5
+          # livenessProbe:
+          #   exec:
+          #     command:
+          #     - "/bin/sh"
+          #     - "-c"
+          #     - "mysql -h 127.0.0.1 -u root -p$(cat /usr/local/share/run/secrets/mysql-root) -e \"SELECT 1\""
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 10
+          #   timeoutSeconds: 5
           readinessProbe:
             exec:
               command:
