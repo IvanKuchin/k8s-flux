@@ -1,0 +1,15 @@
+resources:
+- ../../../../base/engine_cpp/app
+images:
+- name: app-image
+  newName: registry.conn-me.ru:5000/infomed-stat.ru-app:v1.1.22 # {"$imagepolicy": "flux-system:infomed-stat-app"}
+- name: uploaders-image
+  newName: registry.conn-me.ru:5000/infomed-stat.ru-uploaders:v1.1.20 # {"$imagepolicy": "flux-system:infomed-stat-uploaders"}
+- name: ui-image
+  newName: registry.conn-me.ru:5000/infomed-stat.ru-ui:v1.1.19 # {"$imagepolicy": "flux-system:infomed-stat-ui"}
+- name: admin-image
+  newName: registry.conn-me.ru:5000/infomed-stat.ru-admin:v1.1.18 # {"$imagepolicy": "flux-system:infomed-stat-admin"}
+- name: www-server-image
+  newName: registry.conn-me.ru:5000/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:infomed-stat-images"}
+- name: cron-image
+  newName: registry.conn-me.ru:5000/infomed-stat.ru-cron:v1.1.14 # {"$imagepolicy": "flux-system:infomed-stat-cron"}

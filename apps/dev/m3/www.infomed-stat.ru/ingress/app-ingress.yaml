@@ -1,0 +1,68 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress-redirect
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.infomed-stat.microk8s.conn-me.ru"
+spec:
+  rules:
+  - host: infomed-stat.microk8s.conn-me.ru
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - www.infomed-stat.microk8s.conn-me.ru
+    secretName: https-secret
+  rules:
+  - host: www.infomed-stat.microk8s.conn-me.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /images
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /video
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /helpdesk_ticket_attaches
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/admin/admin.cgi
+        backend:
+          service:
+            name: admin-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: ui-service
+            port:
+              number: 80
