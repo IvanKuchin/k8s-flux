@@ -1,0 +1,10 @@
+resources:
+  - adminer
+  - app
+  #- chat
+  #- backup
+  - db
+  #- goaccess
+  - ingress
+  - pv
+namespace: www-timecard-ru

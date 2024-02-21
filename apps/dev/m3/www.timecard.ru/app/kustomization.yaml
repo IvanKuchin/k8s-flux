@@ -1,0 +1,15 @@
+resources:
+- ../../../../base/engine_cpp/app
+images:
+- name: app-image
+  newName: registry.conn-me.ru:5000/timecard.ru-app:v1.1.22 # {"$imagepolicy": "flux-system:timecard-app"}
+- name: uploaders-image
+  newName: registry.conn-me.ru:5000/timecard.ru-uploaders:v1.1.20 # {"$imagepolicy": "flux-system:timecard-uploaders"}
+- name: ui-image
+  newName: registry.conn-me.ru:5000/timecard.ru-ui:v1.1.19 # {"$imagepolicy": "flux-system:timecard-ui"}
+- name: admin-image
+  newName: registry.conn-me.ru:5000/timecard.ru-admin:v1.1.18 # {"$imagepolicy": "flux-system:timecard-admin"}
+- name: www-server-image
+  newName: registry.conn-me.ru:5000/www-server-and-expire:v0.1.3 # {"$imagepolicy": "flux-system:timecard-images"}
+- name: cron-image
+  newName: registry.conn-me.ru:5000/timecard.ru-cron:v1.1.21 # {"$imagepolicy": "flux-system:timecard-cron"}
