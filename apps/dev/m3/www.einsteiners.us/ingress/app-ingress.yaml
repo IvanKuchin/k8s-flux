@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress-redirect
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.einsteiners.microk8s.conn-me.ru"
+spec:
+  rules:
+  - host: einsteiners.microk8s.conn-me.ru
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - www.einsteiners.microk8s.conn-me.ru
+    secretName: https-secret
+  rules:
+  - host: www.einsteiners.microk8s.conn-me.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
