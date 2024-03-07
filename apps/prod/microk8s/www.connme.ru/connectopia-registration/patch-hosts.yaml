@@ -1,0 +1,6 @@
+- op: add #action
+  path: "/spec/hostAliases" #resouirce we want to change
+  value:             #value we want to use for patching
+  - ip: "172.16.17.18"
+    hostnames:
+    - "www.connectopia.social"
