@@ -1,5 +1,5 @@
 - op: add #action
-  path: "/spec/jobTemplate/spec/template/spec/hostAliases" #resouirce we want to change
+  path: "/spec/hostAliases" #resouirce we want to change
   value:             #value we want to use for patching
   - ip: "172.16.17.18"
     hostnames:
