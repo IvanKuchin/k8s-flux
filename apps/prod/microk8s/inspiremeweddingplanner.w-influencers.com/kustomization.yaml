@@ -1,0 +1,4 @@
+resources:
+  - app
+  - ingress
+namespace: inspiremeweddingplanner-w-influencers-com
