@@ -2,4 +2,4 @@ resources:
 - ui-deployment.yaml
 images:
 - name: ui-image
-  newName: ghcr.io/ivankuchin/inspiremeweddingplanner.w-influencers.com:v0.0.1 # {"$imagepolicy": "flux-system:inspiremeweddingplanner-w-influencers-com"}
+  newName: ghcr.io/ivankuchin/inspiremeweddingplanner.w-influencers.com:v0.1.2 # {"$imagepolicy": "flux-system:inspiremeweddingplanner-w-influencers-com"}
