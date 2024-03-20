@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: app-ingress-redirect
   annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/permanent-redirect: "https://www.connectopia.social"
 spec:
+  tls:
+  - hosts:
+    - connectopia.social
+    secretName: https-secret-redirect
   rules:
   - host: connectopia.social
 ---
