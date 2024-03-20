@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - bestbounty.ru
-    secretName: https-secret-no-www
+    secretName: https-secret-redirect
   rules:
   - host: bestbounty.ru
 ---
