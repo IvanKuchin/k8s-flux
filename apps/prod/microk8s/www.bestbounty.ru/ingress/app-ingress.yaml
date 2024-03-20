@@ -1,5 +1,5 @@
 apiVersion: networking.k8s.io/v1
-kind: Ingress
+kind: BIngress
 metadata:
   name: app-ingress-redirect
   annotations:
@@ -20,6 +20,7 @@ spec:
   tls:
   - hosts:
     - www.bestbounty.ru
+    - bestbounty.ru
     secretName: https-secret
   rules:
   - host: www.bestbounty.ru
