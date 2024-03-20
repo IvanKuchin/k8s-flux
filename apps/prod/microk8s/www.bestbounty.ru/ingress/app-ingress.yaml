@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: app-ingress-redirect
   annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/permanent-redirect: "https://www.bestbounty.ru"
 spec:
+  tls:
+  - hosts:
+    - bestbounty.ru
+    secretName: https-secret-no-www
   rules:
   - host: bestbounty.ru
 ---
@@ -20,7 +26,6 @@ spec:
   tls:
   - hosts:
     - www.bestbounty.ru
-    - bestbounty.ru
     secretName: https-secret
   rules:
   - host: www.bestbounty.ru
