@@ -18,6 +18,7 @@ spec:
       labels:
         type: ui
     spec:
+      terminationGracePeriodSeconds: 0
       securityContext:
         fsGroup: 33    # --- assign group ID to mounted volume
       hostAliases:
