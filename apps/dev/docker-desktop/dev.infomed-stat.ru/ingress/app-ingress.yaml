@@ -1,0 +1,67 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    #cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  ingressClassName: nginx
+  # tls:
+  # - hosts:
+  #   - dev.infomed-stat.ru
+  #   secretName: https-secret
+  rules:
+  - host: dev.infomed-stat.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /images
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /video
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /helpdesk_ticket_attaches
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin/admin/admin.cgi
+        backend:
+          service:
+            name: admin-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /api/v1/domain
+        backend:
+          service:
+            name: domain-name-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: ui-service
+            port:
+              number: 80

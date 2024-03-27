@@ -1,0 +1,5 @@
+resources:
+- ../../../../base/engine_cpp/chat
+images:
+- name: chat-image
+  newName: ghcr.io/ivankuchin/websocket-chat:v1.1.1 # {"$imagepolicy": "flux-system:websocket-chat"}

@@ -1,0 +1,17 @@
+resources:
+- ../../../../base/engine_cpp/app
+images:
+- name: app-image
+  newName: infomed-stat.ru-app
+- name: uploaders-image
+  newName: infomed-stat.ru-uploaders
+- name: ui-image
+  newName: infomed-stat.ru-ui
+- name: admin-image
+  newName: infomed-stat.ru-admin
+- name: www-server-image
+  newName: ghcr.io/ivankuchin/www-server-and-expire:latest
+- name: cron-image
+  newName: infomed-stat.ru-cron
+- name: domain-name-image
+  newName: ghcr.io/ivankuchin/domain-name:latest
