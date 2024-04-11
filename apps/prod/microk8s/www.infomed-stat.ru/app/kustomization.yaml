@@ -2,7 +2,7 @@ resources:
 - ../../../../base/engine_cpp/app
 images:
 - name: app-image
-  newName: ghcr.io/ivankuchin/infomed-stat.ru-app:v1.12.0 # {"$imagepolicy": "flux-system:infomed-stat-app"}
+  newName: ghcr.io/ivankuchin/infomed-stat.ru-app:v1.13.0 # {"$imagepolicy": "flux-system:infomed-stat-app"}
 - name: uploaders-image
   newName: ghcr.io/ivankuchin/infomed-stat.ru-uploaders:v1.13.0 # {"$imagepolicy": "flux-system:infomed-stat-uploaders"}
 - name: ui-image
