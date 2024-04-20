@@ -2,4 +2,4 @@ resources:
 - go-migrate-cronjob.yaml
 images:
 - name: go-migrate-image
-  newName: migrate/migrate:v4.17.0 # {"$imagepolicy": "flux-system:go-migrate"}
+  newName: migrate/migrate:v4.17.1 # {"$imagepolicy": "flux-system:go-migrate"}
