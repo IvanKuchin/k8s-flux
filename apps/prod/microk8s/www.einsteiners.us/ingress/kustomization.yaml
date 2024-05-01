@@ -1,3 +1,4 @@
 resources:
 - adminer-ingress.yaml
 - app-ingress.yaml
+- admin-ingress.yaml
