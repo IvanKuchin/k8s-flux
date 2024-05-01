@@ -124,13 +124,6 @@ spec:
             port:
               number: 80
       - pathType: Prefix
-        path: /cgi-bin/admin/admin.cgi
-        backend:
-          service:
-            name: admin-service
-            port:
-              number: 80
-      - pathType: Prefix
         path: /
         backend:
           service:
