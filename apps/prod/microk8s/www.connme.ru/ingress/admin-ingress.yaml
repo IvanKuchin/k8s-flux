@@ -17,7 +17,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /cgi-bin/admin/admin.cgi
+        path: /cgi-bin/admin/
         backend:
           service:
             name: admin-service
