@@ -23,3 +23,17 @@ spec:
             name: admin-service
             port:
               number: 80
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: ui-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
