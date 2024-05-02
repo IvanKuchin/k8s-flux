@@ -1,24 +1,26 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: app-ingress-redirect
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.bestbounty.ru"
-spec:
-  tls:
-  - hosts:
-    - bestbounty.ru
-    secretName: https-secret-redirect
-  rules:
-  - host: bestbounty.ru
----
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: app-ingress-redirect
+#   annotations:
+#     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+#     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+#     nginx.ingress.kubernetes.io/permanent-redirect: "https://www.bestbounty.ru"
+# spec:
+#   tls:
+#   - hosts:
+#     - bestbounty.ru
+#     secretName: https-secret-redirect
+#   rules:
+#   - host: bestbounty.ru
+# ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress
   annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     #cert-manager.io/cluster-issuer: "letsencrypt-staging"
@@ -26,6 +28,7 @@ spec:
   tls:
   - hosts:
     - www.bestbounty.ru
+    - bestbounty.ru
     secretName: https-secret
   rules:
   - host: www.bestbounty.ru
