@@ -1,33 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-ingress-redirect
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.infomed-stat.ru"
-spec:
-  tls:
-  - hosts:
-    - infomed-stat.ru
-    secretName: https-secret-redirect
-  rules:
-  - host: infomed-stat.ru
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: app-ingress
   annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($host = 'infomed-stat.ru' ) {
+        rewrite ^ https://www.infomed-stat.ru$request_uri permanent;
+      }
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     #cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   tls:
   - hosts:
     - www.infomed-stat.ru
+    - infomed-stat.ru
     secretName: https-secret
   rules:
+  - host: infomed-stat.ru
   - host: www.infomed-stat.ru
     http:
       paths:
