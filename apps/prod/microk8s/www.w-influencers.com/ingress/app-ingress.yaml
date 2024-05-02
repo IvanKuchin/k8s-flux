@@ -1,26 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-ingress-redirect
-  annotations:
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.w-influencers.com"
-spec:
-  rules:
-  - host: w-influencers.com
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: app-ingress
   annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($host = 'w-influencers.com' ) {
+        rewrite ^ https://www.w-influencers.com$request_uri permanent;
+      }
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
   - hosts:
     - www.w-influencers.com
+    - w-influencers.com
     secretName: https-secret
   rules:
+  - host: w-influencers.com
   - host: www.w-influencers.com
     http:
       paths:
