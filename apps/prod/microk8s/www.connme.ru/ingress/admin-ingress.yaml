@@ -8,12 +8,12 @@ metadata:
     #cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   #ingressClassName: nginx
-  tls:
-  - hosts:
-    - www.connme.ru
-    secretName: https-secret
+  # tls:
+  # - hosts:
+  #   - www.connme.ru
+  #   secretName: https-secret
   rules:
-  - host: www.connme.ru
+  - host: admin.connme.ru
     http:
       paths:
       - pathType: Prefix
