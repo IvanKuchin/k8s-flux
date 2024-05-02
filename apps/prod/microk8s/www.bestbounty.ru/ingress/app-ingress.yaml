@@ -20,8 +20,12 @@ metadata:
   name: app-ingress
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($host = 'bestbounty.ru' ) {
+        rewrite ^https://www.bestbounty.ru$request_uri permanent;
+      }
     # cert-manager.io/cluster-issuer: "letsencrypt-prod"
     cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
