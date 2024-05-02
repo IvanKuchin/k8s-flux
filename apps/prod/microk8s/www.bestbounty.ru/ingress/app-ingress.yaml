@@ -22,8 +22,8 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   tls:
   - hosts:
