@@ -37,3 +37,18 @@ spec:
             name: app-service
             port:
               number: 80
+      - pathType: Prefix
+        path: /images
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /video
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+              
