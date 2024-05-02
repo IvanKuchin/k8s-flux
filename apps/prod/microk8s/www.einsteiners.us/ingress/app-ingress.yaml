@@ -1,27 +1,35 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: app-ingress-redirect
-  annotations:
-    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.einsteiners.us"
-spec:
-  rules:
-  - host: einsteiners.us
----
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: app-ingress-redirect
+#   annotations:
+#     nginx.ingress.kubernetes.io/permanent-redirect: "https://www.einsteiners.us"
+# spec:
+#   rules:
+#   - host: einsteiners.us
+# ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress
   annotations:
     # nginx.ingress.kubernetes.io/whitelist-source-range: 47.14.43.174/32
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($host = 'einsteiners.us' ) {
+        rewrite ^ https://www.einsteiners.us$request_uri permanent;
+      }
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
   - hosts:
     - www.einsteiners.us
+    - einsteiners.us
     secretName: https-secret
   rules:
+  - host: einsteiners.us
   - host: www.einsteiners.us
     http:
       paths:
