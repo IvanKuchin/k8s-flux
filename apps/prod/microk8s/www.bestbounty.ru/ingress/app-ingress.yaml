@@ -26,8 +26,8 @@ metadata:
       if ($host = 'bestbounty.ru' ) {
         rewrite ^ https://www.bestbounty.ru$request_uri permanent;
       }
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    # cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   tls:
   - hosts:
