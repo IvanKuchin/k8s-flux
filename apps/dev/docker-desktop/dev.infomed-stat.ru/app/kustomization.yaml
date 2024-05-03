@@ -1,5 +1,10 @@
 resources:
 - ../../../../base/engine_cpp/app
+patches:
+  - target:
+      kind: Deployment
+      name: ui-deployment
+    path: ui-deployment-add-volume.yaml
 images:
 - name: app-image
   newName: infomed-stat.ru-app

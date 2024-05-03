@@ -1,6 +1,7 @@
 resources:
 - db-pv.yaml
 - images-pv.yaml
+- www-pv.yaml
 #- apachelogs-pv.yaml
 #- goaccess-pv.yaml
 

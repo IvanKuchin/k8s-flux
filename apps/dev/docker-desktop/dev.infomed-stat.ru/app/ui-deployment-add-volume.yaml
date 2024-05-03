@@ -1,0 +1,11 @@
+- op: add
+  path: /spec/template/spec/volumes/-
+  value:
+    name: www-vol
+    persistentVolumeClaim:
+      claimName: www-pvc
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/-
+  value:
+    name: www-vol
+    mountPath: /home/httpd/www/html
