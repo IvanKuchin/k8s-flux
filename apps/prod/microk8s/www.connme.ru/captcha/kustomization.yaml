@@ -2,4 +2,4 @@ resources:
 - ../../../../base/engine_cpp/captcha
 images:
 - name: captcha-image
-  newName: ghcr.io/ivankuchin/captcha_pi:v0.0.6 # {"$imagepolicy": "flux-system:captcha-server"}
+  newName: ghcr.io/ivankuchin/captcha_pi:v0.0.7 # {"$imagepolicy": "flux-system:captcha-server"}
