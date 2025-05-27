@@ -1,0 +1,11 @@
+resources:
+  - adminer
+  - app
+  #- chat
+  #- backup
+  - db
+  #- go-migrate
+  #- goaccess
+  - ingress
+  - pv
+namespace: dev-infomed-stat-ru
