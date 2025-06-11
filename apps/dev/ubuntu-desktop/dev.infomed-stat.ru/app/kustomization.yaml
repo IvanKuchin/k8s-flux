@@ -5,6 +5,10 @@ patches:
       kind: Deployment
       name: ui-deployment
     path: ui-deployment-add-volume.yaml
+  - target:
+      kind: Deployment
+      name: app-deployment
+    path: app-deployment-add-volume.yaml
 images:
 - name: app-image
   newName: infomed-stat.ru-app

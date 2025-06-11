@@ -2,6 +2,7 @@ resources:
 - db-pv.yaml
 - images-pv.yaml
 - www-pv.yaml
+- templates-pv.yaml
 #- apachelogs-pv.yaml
 #- goaccess-pv.yaml
 
