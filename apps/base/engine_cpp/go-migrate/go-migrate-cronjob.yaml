@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: go-migrate-hourly-cronjob
+  name: go-daily-hourly-cronjob
 spec:
-  schedule: "0 * * * *"
+  schedule: "0 3 * * *"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
