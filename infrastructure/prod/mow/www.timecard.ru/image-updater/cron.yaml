@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: timecard-cron
+  namespace: flux-system
+spec:
+  image: ghcr.io/ivankuchin/timecard.ru-cron
+  interval: 6h0m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: timecard-cron
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: timecard-cron
+  policy:
+    semver:
+      range: 1.x.x
+

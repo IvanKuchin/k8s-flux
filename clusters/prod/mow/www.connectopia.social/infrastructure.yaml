@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: connectopia-infra
+  namespace: flux-system
+spec:
+  interval: 15m0s
+  path: ./infrastructure/prod/mow/www.connectopia.social
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+
