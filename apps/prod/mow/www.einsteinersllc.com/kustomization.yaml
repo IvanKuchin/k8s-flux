@@ -1,4 +1,4 @@
 resources:
   - app
   - ingress
-namespace: www-einsteiners-llc-com
+namespace: www-einsteinersllc-com
