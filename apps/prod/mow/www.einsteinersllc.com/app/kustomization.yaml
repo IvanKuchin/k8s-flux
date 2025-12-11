@@ -1,0 +1,5 @@
+resources:
+- ui-deployment.yaml
+images:
+- name: ui-image
+  newName: ghcr.io/ivankuchin/www.einsteinersllc.com:v0.0.1 # {"$imagepolicy": "flux-system:www.einsteinersllc.com"}

@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($host = 'einsteinersllc.com' ) {
+        rewrite ^ https://www.einsteinersllc.com$request_uri permanent;
+      }
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - www.einsteinersllc.com
+    - einsteinersllc.com
+    secretName: https-secret
+  rules:
+  - host: einsteinersllc.com
+  - host: www.einsteinersllc.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: ui-service
+            port:
+              number: 80
