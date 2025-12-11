@@ -18,4 +18,4 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/stefanprodan/podinfo
-  interval: 10m0s
+  interval: 24h0m0s

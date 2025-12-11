@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/ivankuchin/timecard.ru-api
-  interval: 6h0m0s
+  interval: 24h0m0s
 
 ---
 apiVersion: image.toolkit.fluxcd.io/v1
