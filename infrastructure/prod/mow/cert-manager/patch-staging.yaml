@@ -1,0 +1,8 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    # Email address used for ACME registration
+    email: ivan.kuchin@gmail.com
