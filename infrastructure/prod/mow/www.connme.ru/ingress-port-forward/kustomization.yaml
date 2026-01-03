@@ -1,0 +1,2 @@
+resources:
+- configmap-patch.yaml
