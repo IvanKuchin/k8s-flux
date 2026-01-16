@@ -36,9 +36,11 @@ spec:
     secretName: https-secret
   rules:
   - host: connme.ru
+    http:
+      paths: *app_paths
   - host: www.connme.ru
     http:
-      paths:
+      paths: &app_path
       - pathType: Prefix
         path: /captcha
         backend:
