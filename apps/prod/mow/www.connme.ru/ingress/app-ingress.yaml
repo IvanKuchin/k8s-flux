@@ -35,12 +35,9 @@ spec:
     - connme.ru
     secretName: https-secret
   rules:
-  - host: connme.ru
-    http:
-      paths: *app_paths
   - host: www.connme.ru
     http:
-      paths: &app_path
+      paths: &app_paths
       - pathType: Prefix
         path: /captcha
         backend:
@@ -90,3 +87,6 @@ spec:
             name: ui-service
             port:
               number: 80
+  - host: connme.ru
+    http:
+      paths: *app_paths
