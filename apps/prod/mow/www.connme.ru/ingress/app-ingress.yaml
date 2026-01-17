@@ -1,19 +1,18 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: app-ingress-redirect
-#   annotations:
-#     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-#     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-#     nginx.ingress.kubernetes.io/permanent-redirect: "https://www.connme.ru"
-# spec:
-#   rules:
-#   - host: connme.ru
-#   tls:
-#   - hosts:
-#     - connme.ru
-#     secretName: https-secret-redirect
-# ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-redirect-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.connme.ru"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+  - host: connme.ru
+  tls:
+  - hosts:
+    - connme.ru
+    secretName: https-secret-redirect
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -21,18 +20,11 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      if ($host = 'connme.ru' ) {
-        rewrite ^ https://www.connme.ru$request_uri permanent;
-      }
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   tls:
   - hosts:
     - www.connme.ru
-    - connme.ru
     secretName: https-secret
   rules:
   - host: www.connme.ru
@@ -90,3 +82,4 @@ spec:
   - host: connme.ru
     http:
       paths: *app_paths
+
