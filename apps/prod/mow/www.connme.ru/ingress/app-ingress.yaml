@@ -29,7 +29,7 @@ spec:
   rules:
   - host: www.connme.ru
     http:
-      paths: &app_paths
+      paths:
       - pathType: Prefix
         path: /captcha
         backend:
@@ -79,7 +79,4 @@ spec:
             name: ui-service
             port:
               number: 80
-  - host: connme.ru
-    http:
-      paths: *app_paths
 
