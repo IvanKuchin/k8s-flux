@@ -2,4 +2,4 @@ resources:
 - ui-deployment.yaml
 images:
 - name: ui-image
-  newName: ghcr.io/smotra-monitoring/stub-frontend:v0.0.1 # {"$imagepolicy": "flux-system:stub-smotra-net"}
+  newName: ghcr.io/smotra-monitoring/stub-frontend:v0.0.4 # {"$imagepolicy": "flux-system:stub-smotra-net"}
