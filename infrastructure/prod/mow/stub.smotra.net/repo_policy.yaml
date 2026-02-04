@@ -5,7 +5,7 @@ metadata:
   name: stub-smotra-net
   namespace: flux-system
 spec:
-  image: github.com/smotra-monitoring/stub-frontend
+  image: ghcr.io/smotra-monitoring/stub-frontend
   interval: 24h0m0s
 
 ---
