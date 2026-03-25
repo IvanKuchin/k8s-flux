@@ -5,6 +5,7 @@ metadata:
   name: demo-einsteiners-app
   namespace: flux-system
 spec:
+  suspend: true
   interval: 15m0s
   path: ./apps/prod/mow/demo.einsteiners.us
   prune: true

@@ -5,6 +5,7 @@ metadata:
   name: inspiremeweddingplanner-w-influencers-com-app
   namespace: flux-system
 spec:
+  suspend: true
   interval: 15m0s
   path: ./apps/prod/mow/inspiremeweddingplanner.w-influencers.com
   prune: true

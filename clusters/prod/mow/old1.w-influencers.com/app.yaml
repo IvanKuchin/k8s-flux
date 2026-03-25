@@ -5,6 +5,7 @@ metadata:
   name: old1-w-influencers-app
   namespace: flux-system
 spec:
+  suspend: true
   interval: 15m0s
   path: ./apps/prod/mow/old1.w-influencers.com
   prune: true

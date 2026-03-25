@@ -5,6 +5,7 @@ metadata:
   name: www-w-influencers-com-infra
   namespace: flux-system
 spec:
+  suspend: true
   interval: 15m0s
   path: ./infrastructure/prod/mow/www.w-influencers.com
   prune: true
