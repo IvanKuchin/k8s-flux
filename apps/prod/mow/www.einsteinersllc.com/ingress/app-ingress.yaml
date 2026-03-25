@@ -25,10 +25,8 @@ spec:
   tls:
   - hosts:
     - www.einsteinersllc.com
-    - einsteinersllc.com
     secretName: https-secret
   rules:
-  - host: einsteinersllc.com
   - host: www.einsteinersllc.com
     http:
       paths:
