@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Setup Flux CLI
         uses: fluxcd/flux2/action@main
       - name: Check for updates
@@ -27,12 +27,34 @@ jobs:
             --export > ./clusters/prod/mow/flux-system/gotk-components.yaml
 
           VERSION="$(flux -v)"
-          echo "flux_version=$VERSION" >> $GITHUB_OUTPUT          
+          echo "flux_version=$VERSION" >> $GITHUB_OUTPUT
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-            branch: update-flux
-            commit-message: Update to ${{ steps.update.outputs.flux_version }}
-            title: Update to ${{ steps.update.outputs.flux_version }}
-            body: |
-              ${{ steps.update.outputs.flux_version }}   
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if there are changes
+          if git diff --quiet; then
+            echo "No changes detected"
+            exit 0
+          fi
+          
+          # Create branch and commit
+          git checkout -b update-flux
+          git add .
+          git commit -m "Update to ${{ steps.update.outputs.flux_version }}"
+          git push -f origin update-flux
+          
+          # Create or update PR using GitHub CLI
+          if gh pr view update-flux --json number -q .number 2>/dev/null; then
+            echo "PR already exists, updating..."
+          else
+            gh pr create \
+              --base main \
+              --head update-flux \
+              --title "Update to ${{ steps.update.outputs.flux_version }}" \
+              --body "${{ steps.update.outputs.flux_version }}"
+          fi   
