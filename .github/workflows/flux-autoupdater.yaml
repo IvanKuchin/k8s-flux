@@ -12,7 +12,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  components:
+  components-on-mow:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -32,6 +32,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          BRANCH_NAME="update-flux-mow"
+          
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -43,18 +45,67 @@ jobs:
           fi
           
           # Create branch and commit
-          git checkout -b update-flux
+          git checkout -b "$BRANCH_NAME"
           git add .
           git commit -m "Update to ${{ steps.update.outputs.flux_version }}"
-          git push -f origin update-flux
+          git push -f origin "$BRANCH_NAME"
           
           # Create or update PR using GitHub CLI
-          if gh pr view update-flux --json number -q .number 2>/dev/null; then
+          if gh pr view "$BRANCH_NAME" --json number -q .number 2>/dev/null; then
             echo "PR already exists, updating..."
           else
             gh pr create \
               --base main \
-              --head update-flux \
+              --head "$BRANCH_NAME" \
               --title "Update to ${{ steps.update.outputs.flux_version }}" \
               --body "${{ steps.update.outputs.flux_version }}"
-          fi   
+          fi
+  components-on-nj:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+      - name: Setup Flux CLI
+        uses: fluxcd/flux2/action@main
+      - name: Check for updates
+        id: update
+        run: |
+          flux install \
+            --components-extra=image-reflector-controller,image-automation-controller \
+            --export > ./clusters/prod/nj/flux-system/gotk-components.yaml
+
+          VERSION="$(flux -v)"
+          echo "flux_version=$VERSION" >> $GITHUB_OUTPUT
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH_NAME="update-flux-nj"
+
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if there are changes
+          if git diff --quiet; then
+            echo "No changes detected"
+            exit 0
+          fi
+          
+          # Create branch and commit
+          BRANCH_NAME="update-flux-nj"
+          git checkout -b "$BRANCH_NAME"
+          git add .
+          git commit -m "Update to ${{ steps.update.outputs.flux_version }}"
+          git push -f origin "$BRANCH_NAME"
+          
+          # Create or update PR using GitHub CLI
+          if gh pr view "$BRANCH_NAME" --json number -q .number 2>/dev/null; then
+            echo "PR already exists, updating..."
+          else
+            gh pr create \
+              --base main \
+              --head "$BRANCH_NAME" \
+              --title "Update to ${{ steps.update.outputs.flux_version }}" \
+              --body "${{ steps.update.outputs.flux_version }}"
+          fi
