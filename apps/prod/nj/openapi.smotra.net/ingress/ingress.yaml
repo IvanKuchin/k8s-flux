@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: openapi-smotra-net
-  namespace: openapi-smotra-net
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
     ingress.cilium.io/loadbalancer-mode: shared
