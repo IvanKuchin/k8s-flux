@@ -1,0 +1,23 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: openapi-smotra-net
+  namespace: flux-system
+spec:
+  image: ghcr.io/smotra-monitoring/openapi
+  interval: 24h0m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: openapi-smotra-net
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: openapi-smotra-net
+  policy:
+    semver:
+      range: 0.x.x
+

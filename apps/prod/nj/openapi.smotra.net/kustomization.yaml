@@ -1,0 +1,4 @@
+resources:
+  - app/
+  - ingress/
+namespace: openapi-smotra-net
