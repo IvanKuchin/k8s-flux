@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-  name: adminer-ingress
+  name: adminer-ingress-org
 spec:
   rules:
-  - host: adminer.connme.ru
+  - host: adminer.connme.org
     http:
       paths:
       - pathType: Prefix

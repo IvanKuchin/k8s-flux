@@ -1,0 +1,82 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-redirect-ingress-ru
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.connme.ru"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+  - host: connme.ru
+  tls:
+  - hosts:
+    - connme.ru
+    secretName: https-secret-redirect-ru
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress-ru
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - www.connme.ru
+    secretName: https-secret-ru
+  rules:
+  - host: www.connme.ru
+    http:
+      paths:
+      - pathType: Prefix
+        path: /captcha
+        backend:
+          service:
+            name: captcha-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /images
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /video
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /helpdesk_ticket_attaches
+        backend:
+          service:
+            name: images-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /cgi-bin
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /api/v1/domain
+        backend:
+          service:
+            name: domain-name-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: ui-service
+            port:
+              number: 80
+

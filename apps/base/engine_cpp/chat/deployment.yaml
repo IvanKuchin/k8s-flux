@@ -31,7 +31,7 @@ spec:
           emptyDir: {}
         - name: chat-key-cert
           secret:
-            secretName: https-secret
+            secretName: https-secret-org
         - name: app-secret
           configMap:
             name: app-secret

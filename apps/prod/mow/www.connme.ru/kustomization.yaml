@@ -8,6 +8,7 @@ resources:
   - go-migrate
   - connectopia-registration
   #- goaccess
-  - ingress
+  - ingress-ru
+  - ingress-org
   - pv
 namespace: www-connme-ru

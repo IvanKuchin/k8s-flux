@@ -1,51 +1,49 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: uploaders-ingress
+  name: admin-ingress-org
   annotations:
+    nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    nginx.ingress.kubernetes.io/app-root: /cgi-bin/admin/admin.cgi
 spec:
-  tls:
-  - hosts:
-    - www.connme.ru
-    secretName: https-secret
   rules:
-  - host: www.connme.ru
+  - host: admin.connme.org
     http:
       paths:
       - pathType: Prefix
-        path: /cgi-bin/avataruploader.cgi
+        path: /cgi-bin/admin/
         backend:
           service:
-            name: uploaders-service
+            name: admin-service
             port:
               number: 80
       - pathType: Prefix
-        path: /cgi-bin/companylogouploader.cgi
+        path: /
         backend:
           service:
-            name: uploaders-service
+            name: ui-service
             port:
               number: 80
       - pathType: Prefix
-        path: /cgi-bin/generalimageuploader.cgi
+        path: /cgi-bin
         backend:
           service:
-            name: uploaders-service
+            name: app-service
             port:
               number: 80
       - pathType: Prefix
-        path: /cgi-bin/grouplogouploader.cgi
+        path: /images
         backend:
           service:
-            name: uploaders-service
+            name: images-service
             port:
               number: 80
       - pathType: Prefix
-        path: /cgi-bin/imageuploader.cgi
+        path: /video
         backend:
           service:
-            name: uploaders-service
+            name: images-service
             port:
               number: 80
+              
