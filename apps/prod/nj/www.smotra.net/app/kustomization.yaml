@@ -1,0 +1,5 @@
+resources:
+  - app.yaml
+images:
+  - name: app-image
+    newName: fake # {"$imagepolicy": "flux-system:www-smotra-net"}

@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: www-smotra-net
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    ingress.cilium.io/loadbalancer-mode: shared
+    # ingress.cilium.io/enforce-https: "false"
+    ingress.cilium.io/secure-backends: "false" # Force Cilium to treat the backend as plain HTTP
+    acme.cert-manager.io/http01-edit-in-place: "true"
+spec:
+  ingressClassName: cilium
+  tls:
+  - hosts:
+    - www.smotra.net
+    secretName: www-smotra-net
+  rules:
+  - host: www.smotra.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app
+            port:
+              number: 80
