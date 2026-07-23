@@ -13,11 +13,11 @@ spec:
   ingressClassName: cilium
   tls:
   - hosts:
-    - api.smotra.net
+    - longhorn.smotra.net
     secretName: longhorn-ingress
   namespace: longhorn-system
   rules:
-  - host: api.smotra.net
+  - host: longhorn.smotra.net
     http:
       paths:
       - path: /
