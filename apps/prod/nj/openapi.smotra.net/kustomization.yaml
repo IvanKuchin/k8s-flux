@@ -1,5 +1,4 @@
 resources:
   - app/
   - http-route/
-  # - ingress/
 namespace: openapi-smotra-net
