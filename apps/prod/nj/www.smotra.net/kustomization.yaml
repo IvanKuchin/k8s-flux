@@ -1,4 +1,4 @@
 resources:
   - app/
-  # - ingress/
+  - http-route/
 namespace: www-smotra-net
