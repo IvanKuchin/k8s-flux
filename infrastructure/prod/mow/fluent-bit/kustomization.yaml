@@ -1,0 +1,9 @@
+resources:
+- ds.yaml
+- cluster-role-binding.yaml
+- cluster-role.yaml
+- service-account.yaml
+- namespace.yaml
+
+namespace: fluent-bit
+
