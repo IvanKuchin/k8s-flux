@@ -44,7 +44,7 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageUpdateAutomation
 metadata:
-  name: image-updater-prod
+  name: image-updater-infra
   namespace: flux-system
 spec:
   git:
