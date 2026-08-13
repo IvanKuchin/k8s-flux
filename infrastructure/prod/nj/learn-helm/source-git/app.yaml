@@ -1,0 +1,33 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: learn-helm
+  namespace: flux-system
+spec:
+  interval: 24h0m0s
+  ref:
+    branch: master
+  secretRef:
+    name: learn-helm
+  url: ssh://git@github.com/IvanKuchin/learn-helm.git
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: learn-helm
+  namespace: tutorial
+spec:
+  interval: 15m0s
+  chart:
+    spec:
+      chart: /
+      sourceRef:
+        kind: GitRepository
+        name: learn-helm
+        namespace: flux-system
+  values:
+    image:
+      repository: ghcr.io/ivankuchin/test-container
+      # {"$imagepolicy": "tutorial:tutorial-app"}
+      tag: 0.0.1
