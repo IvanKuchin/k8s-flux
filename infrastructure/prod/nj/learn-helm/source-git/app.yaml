@@ -9,7 +9,7 @@ spec:
   ref:
     branch: master
   secretRef:
-    name: learn-helm
+    name: flux-system
   url: ssh://git@github.com/IvanKuchin/learn-helm.git
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
