@@ -21,7 +21,7 @@ spec:
   interval: 15m0s
   chart:
     spec:
-      chart: /
+      chart: ./
       sourceRef:
         kind: GitRepository
         name: learn-helm
