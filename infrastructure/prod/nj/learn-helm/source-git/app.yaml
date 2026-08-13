@@ -29,5 +29,5 @@ spec:
   values:
     image:
       repository: ghcr.io/ivankuchin/test-container
-      # {"$imagepolicy": "tutorial:tutorial-app"}
+      # {"$imagepolicy": "flux-system:learn-helm"}
       tag: 0.0.1
