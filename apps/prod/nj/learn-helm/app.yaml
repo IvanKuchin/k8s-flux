@@ -18,6 +18,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m0s
+  targetNamespace: tutorial
   chart:
     spec:
       chart: ./
