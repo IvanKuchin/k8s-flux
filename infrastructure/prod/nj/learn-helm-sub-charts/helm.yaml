@@ -1,0 +1,28 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: learn-helm-sub-charts
+  namespace: flux-system
+spec:
+  interval: 24h0m0s
+  ref:
+    branch: master
+  secretRef:
+    name: flux-system
+  url: ssh://git@github.com/IvanKuchin/learn-helm-sub-charts.git
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: learn-helm
+  namespace: flux-system
+spec:
+  interval: 15m0s
+  targetNamespace: tutorial
+  chart:
+    spec:
+      chart: ./umbrella
+      sourceRef:
+        kind: GitRepository
+        name: learn-helm-sub-charts
+        namespace: flux-system
