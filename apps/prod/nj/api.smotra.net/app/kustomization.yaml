@@ -2,4 +2,4 @@ resources:
   - app.yaml
 images:
   - name: app-image
-    newName: ghcr.io/smotra-monitoring/api-server:v0.3.1 # {"$imagepolicy": "flux-system:api-smotra-net"}
+    newName: ghcr.io/smotra-monitoring/api-server:v0.3.2 # {"$imagepolicy": "flux-system:api-smotra-net"}
