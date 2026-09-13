@@ -5,7 +5,7 @@ metadata:
   name: connme-uploaders
   namespace: flux-system
 spec:
-  image: ghcr.io/ivankuchin/connme.ru-uploaders
+  image: ghcr.io/ivankuchin/connme.org-uploaders
   interval: 24h0m0s
 
 ---

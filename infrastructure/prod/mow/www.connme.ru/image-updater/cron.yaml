@@ -5,7 +5,7 @@ metadata:
   name: connme-cron
   namespace: flux-system
 spec:
-  image: ghcr.io/ivankuchin/connme.ru-cron
+  image: ghcr.io/ivankuchin/connme.org-cron
   interval: 24h0m0s
 
 ---
