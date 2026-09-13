@@ -2,7 +2,7 @@ resources:
 - ../../../../base/engine_cpp/app
 images:
 - name: app-image
-  newName: ghcr.io/ivankuchin/connme.org-app:v1.11.5 # {"$imagepolicy": "flux-system:connme-app"}
+  newName: ghcr.io/ivankuchin/connme.org-app:v1.10.7 # {"$imagepolicy": "flux-system:connme-app"}
 - name: uploaders-image
   newName: ghcr.io/ivankuchin/connme.org-uploaders:v1.11.5 # {"$imagepolicy": "flux-system:connme-uploaders"}
 - name: ui-image
