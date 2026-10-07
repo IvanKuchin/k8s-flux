@@ -1,4 +1,0 @@
-resources:
-  - app/
-  - http-route/
-namespace: openapi-smotra-net

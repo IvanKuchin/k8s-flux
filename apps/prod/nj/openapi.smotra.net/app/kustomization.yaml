@@ -1,5 +1,0 @@
-resources:
-  - app.yaml
-images:
-  - name: app-image
-    newName: ghcr.io/smotra-monitoring/openapi:v0.1.0 # {"$imagepolicy": "flux-system:openapi-smotra-net"}
