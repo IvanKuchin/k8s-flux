@@ -1,0 +1,27 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: smotra-net-charts
+  namespace: flux-system
+spec:
+  interval: 24h0m0s
+  ref:
+    branch: master
+  secretRef:
+    name: flux-system
+  url: ssh://git@github.com/smotra-monitoring/chart.git
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: smotra-net
+  namespace: flux-system
+spec:
+  interval: 15m0s
+  chart:
+    spec:
+      chart: ./umbrella
+      sourceRef:
+        kind: GitRepository
+        name: smotra-net-charts
+        namespace: flux-system
